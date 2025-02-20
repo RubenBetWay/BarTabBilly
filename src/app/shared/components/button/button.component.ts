@@ -1,5 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ButtonConfig, ButtonSize } from './button.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-button',
@@ -8,9 +9,12 @@ import { ButtonConfig, ButtonSize } from './button.model';
 })
 export class ButtonComponent {
   @Input() config: ButtonConfig | undefined;
+  @Output() onClick: EventEmitter<ButtonConfig> = new EventEmitter()
 
   button = document.querySelector('.ripple-button') as HTMLButtonElement;
   customStyling: object = {}
+
+constructor(private router: Router){}
 
   ngOnInit(){
     if (!this.config) return
@@ -22,6 +26,14 @@ export class ButtonComponent {
   }
 
   onButtonClick(event: MouseEvent) {
+    this.rippleButton(event)
+    if (this.config?.url) 
+      this.router.navigate([this.config?.url])
+    else
+      this.onClick.emit(this.config)
+  }
+
+  private rippleButton(event: MouseEvent){
     const button = event.currentTarget as HTMLButtonElement;
     const rect = button.getBoundingClientRect();
     const size = Math.max(rect.width, rect.height);
