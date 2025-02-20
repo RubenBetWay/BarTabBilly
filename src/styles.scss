@@ -5,4 +5,11 @@ html, body {
   padding: 0;
   height: 100vh;
   width: 100vw;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+app-home-page {
+  display: flex;
+  width: 100vw;
+  height: 100%;
 }
