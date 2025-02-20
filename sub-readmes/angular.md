@@ -1,3 +1,7 @@
+<div align="right">
+  <a href="../README.md">Back to Main Readme</a>
+</div>
+
 # BarTabBilly
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.2.
