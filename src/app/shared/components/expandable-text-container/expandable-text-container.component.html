@@ -1,0 +1,6 @@
+<div class="container" [class.expanded]="isExpanded" id="textContainer">
+  <div id="text">{{text}}</div>
+  <div class="fade" id="fadeEffect">
+    <button class="toggle-btn" (click)="toggleText()">{{ isExpanded ? '▲' : '▼' }}</button>
+  </div>
+</div>
