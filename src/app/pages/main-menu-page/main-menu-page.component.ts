@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ButtonConfig, ButtonSize } from 'src/app/shared/components/button/button.model';
 
 @Component({
@@ -6,10 +6,8 @@ import { ButtonConfig, ButtonSize } from 'src/app/shared/components/button/butto
   templateUrl: './main-menu-page.component.html',
   styleUrls: ['./main-menu-page.component.scss'],
 })
-export class MainMenuPageComponent implements OnInit {
-  isLoading = true;
-
-  menuOptions: ButtonConfig[] = [
+export class MainMenuPageComponent {
+   menuOptions: ButtonConfig[] = [
     { 
       text: 'Order Round', 
       size: ButtonSize.Large, 
@@ -22,10 +20,4 @@ export class MainMenuPageComponent implements OnInit {
     },
   ];
 
-  ngOnInit() {
-    // For now to get a feel - this will become a app loading screen
-    setTimeout(() => {
-      this.isLoading = false;
-    }, 1000);
-  }
 }

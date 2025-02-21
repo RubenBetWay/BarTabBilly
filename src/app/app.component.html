@@ -1,3 +1,10 @@
-<div class="container">
-  <router-outlet ></router-outlet>
+<div class="outer-container">
+  <div *ngIf="isLoading" class="container">
+    <img class="main-logo" src="assets/main-logo.jpeg" alt="Description of image">
+  </div>
+
+  <div *ngIf="!isLoading" class="inner-container">
+    <router-outlet ></router-outlet>
+  </div>
 </div>
+
