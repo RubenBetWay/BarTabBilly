@@ -7,6 +7,7 @@ import { ButtonComponent } from './shared/components/button/button.component';
 import { OrderRoundPageComponent } from './pages/order-round-page/order-round-page.component';
 import { SettleTabPageComponent } from './pages/settle-tab-page/settle-tab-page.component';
 import { MainMenuPageComponent } from './pages/main-menu-page/main-menu-page.component';
+import { StockItemCardComponent } from './shared/components/stock-item-card/stock-item-card.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { MainMenuPageComponent } from './pages/main-menu-page/main-menu-page.com
 
     // Shared component
     ButtonComponent,
+     StockItemCardComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,1 +1,7 @@
-<button class="button" *ngIf="config" [ngStyle]="customStyling" (click)="onButtonClick($event)">{{config.text}}</button>
+<button 
+  class="button" 
+  *ngIf="config" 
+  [ngStyle]="customStyling" 
+  (click)="onButtonClick($event)">
+  {{config.text}}
+</button>
