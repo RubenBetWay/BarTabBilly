@@ -1,1 +1,8 @@
-<p>order-round-page works!</p>
+<div class="container">
+  <div class="logo">Order Round</div>
+  <app-stock-item-card
+  class="card" 
+  *ngFor="let config of stockItemCardConfigs"
+  [config]="config">
+</app-stock-item-card>
+</div>
