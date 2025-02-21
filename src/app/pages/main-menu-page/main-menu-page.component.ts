@@ -23,6 +23,7 @@ export class MainMenuPageComponent implements OnInit {
   ];
 
   ngOnInit() {
+    // For now to get a feel - this will become a app loading screen
     setTimeout(() => {
       this.isLoading = false;
     }, 1000);
