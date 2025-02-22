@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  isLoading = true;
+  isLoading = false;
 
   ngOnInit() {
     // For now to get a feel - this will become a app loading screen

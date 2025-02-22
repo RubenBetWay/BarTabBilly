@@ -1,5 +1,5 @@
-import { AfterViewInit, Component, Input, ViewChild } from '@angular/core';
-import { StockItemCardConfig } from './stock-item-card.model';
+import { AfterViewInit, Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
+import { OrderInstruction, StockItemCardConfig } from './stock-item-card.model';
 import { QuantityToggleComponent } from '../quantity-toggle/quantity-toggle.component';
 import { ButtonConfig, ButtonSize } from '../button/button.model';
 
@@ -10,9 +10,12 @@ import { ButtonConfig, ButtonSize } from '../button/button.model';
 })
 export class StockItemCardComponent {
   @Input() config: StockItemCardConfig | undefined;
+  @Output() addToOrder: EventEmitter<OrderInstruction> = new EventEmitter
+
   @ViewChild('quantityToggleComponent')
   quantityToggleComponent!: QuantityToggleComponent;
 
+  qty = 0
   subtotal: number = 0;
   addButtonConfig: ButtonConfig = {
     text: 'Add',
@@ -22,6 +25,8 @@ export class StockItemCardComponent {
 
   onAddClick() {
     if (this.quantityToggleComponent) {
+      const orderInstruction = Object.assign({}, this.config, {qty: this.qty})
+      this.addToOrder.emit(Object.assign({}, this.config, {qty: this.qty}))
       this.quantityToggleComponent.resetToZero();
     } else {
       console.error('QuantityToggleComponent is not available!');
@@ -30,7 +35,8 @@ export class StockItemCardComponent {
 
   onQtyChange(qty: number) {
     if (this.config?.price) {
-      this.subtotal = qty * this.config.price;
+      this.qty = qty
+      this.subtotal = this.qty * this.config.price;
     }
   }
 }

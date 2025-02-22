@@ -3,6 +3,17 @@
   <app-stock-item-card
   class="card" 
   *ngFor="let config of stockItemCardConfigs"
-  [config]="config">
-</app-stock-item-card>
+  [config]="config"
+  (addToOrder)="onOrderInstruction($event)">
+  </app-stock-item-card>
+  <div [ngStyle]="extraSpaceStyling"></div>
 </div>
+
+<!-- Bottom Sheet Component -->
+<app-bottom-sheet
+  #bottomSheet
+  class="bottom-sheet"
+  [isOpen]="showBottomSheet" 
+>
+  <p>This is dynamic content inside the bottom sheet!</p>
+</app-bottom-sheet>
