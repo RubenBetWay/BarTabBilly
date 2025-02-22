@@ -1,9 +1,12 @@
 import {
   Component,
+  EventEmitter,
   Input,
   OnChanges,
   OnInit,
+  Output,
   SimpleChanges,
+  ViewChild,
 } from '@angular/core';
 import { OrderItem } from './order-summary.model';
 import {
@@ -11,6 +14,7 @@ import {
   ClosedStateButtons,
   OpenStateButtons,
 } from './order-summary.const';
+import { OrderSummaryTableComponent } from '../../components/order-summary-table/order-summary-table.component';
 
 @Component({
   selector: 'app-order-summary',
@@ -18,10 +22,12 @@ import {
   styleUrls: ['./order-summary.component.scss'],
 })
 export class OrderSummaryComponent {
+  @Output() orderPlaced: EventEmitter<void> = new EventEmitter();
+
   orderItems: OrderItem[] = [];
   orderTotal = 0;
   superSummaryButtons = ClosedStateButtons;
-  showDetails = false
+  showDetails = false;
 
   updateOrder(orderItems: OrderItem[]) {
     this.orderItems = orderItems;
@@ -31,16 +37,17 @@ export class OrderSummaryComponent {
   onButtonClick(buttonName: string) {
     switch (buttonName) {
       case OrderSummaryButtonNames.View: {
-        this.superSummaryButtons = OpenStateButtons
-        this.showDetails = true
+        this.superSummaryButtons = OpenStateButtons;
+        this.showDetails = true;
         break;
       }
       case OrderSummaryButtonNames.Close: {
         this.superSummaryButtons = ClosedStateButtons;
-        this.showDetails = false
+        this.showDetails = false;
         break;
       }
       case OrderSummaryButtonNames.Order: {
+        this.orderPlaced.emit();
         break;
       }
     }

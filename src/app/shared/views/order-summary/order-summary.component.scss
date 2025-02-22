@@ -9,6 +9,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  font-weight: bold;
 }
 
 .buttons-container {
@@ -47,6 +48,11 @@
         width: 100%;
         text-align: end;
       }
+    }
+
+    .total-row {
+      border-top: 1px solid black;
+      border-bottom: 1px solid black;
     }
   }
 }

@@ -12,6 +12,7 @@ import { ExpandableTextContainerComponent } from './shared/components/expandable
 import { QuantityToggleComponent } from './shared/components/quantity-toggle/quantity-toggle.component';
 import { BottomSheetComponent } from './shared/components/bottom-sheet/bottom-sheet.component';
 import { OrderSummaryComponent } from './shared/views/order-summary/order-summary.component';
+import { OrderSummaryTableComponent } from './shared/components/order-summary-table/order-summary-table.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { OrderSummaryComponent } from './shared/views/order-summary/order-summar
     ExpandableTextContainerComponent,
     QuantityToggleComponent,
     BottomSheetComponent,
-    OrderSummaryComponent
+    OrderSummaryComponent,
+    OrderSummaryTableComponent
   ],
   imports: [
     BrowserModule,
