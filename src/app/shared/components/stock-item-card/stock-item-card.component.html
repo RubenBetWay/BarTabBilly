@@ -1,7 +1,29 @@
 <div 
   class="card" 
   *ngIf="config">
-  <img class="image" src="assets/main-logo.jpeg" alt="Description of image">
-  <div class="title">{{config.title}}</div>
-  <app-expandable-text-container [text]="config.details"></app-expandable-text-container>
+
+  <div class="top-section">
+    <img class="image" src="assets/main-logo.jpeg" alt="Description of image">
+    <div class="order-panel">
+      <div class="price">R {{config.price | number: '1.2-2'}} ea</div>
+      <app-quantity-toggle 
+        #quantityToggleComponent
+        class="quantity-toggle" 
+        (latestQty)="onQtyChange($event)">
+      </app-quantity-toggle>
+      <div class="subtotal"><span>Sub-total</span>R {{subtotal | number: '1.2-2'}}</div>
+      <app-button 
+        *ngIf="subtotal > 0"
+        [config]="addButtonConfig"
+        (onClick)="onAddClick()">
+    </app-button>
+    </div>
+
+  </div>
+
+  <div class="bottom-section">
+    <div class="title">{{config.title}}</div>
+    <app-expandable-text-container [text]="config.details"></app-expandable-text-container>
+  </div>
+  
 </div>

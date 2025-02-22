@@ -10,6 +10,7 @@ export class OrderRoundPageComponent {
   stockItemCardConfigs: StockItemCardConfig[] = [
     {
       title: 'Beer',
+      price: 45,
       details: 
         `Celebrate with a cold one! Beer is the perfect \
         companion for any occasion. From crisp lagers \
@@ -23,6 +24,7 @@ export class OrderRoundPageComponent {
     },
     {
       title: 'Cider',
+      price: 52,
       details: 
         `Get your apple on! Cider is a refreshing twist \
         on traditional drinks. From sweet and fruity to \
@@ -35,6 +37,7 @@ export class OrderRoundPageComponent {
     },
     {
       title: 'Pre-mix',
+      price: 59,
       details: 
         `Convenience in a can! Pre-mix drinks are the \
         perfect choice when you want a hassle-free \

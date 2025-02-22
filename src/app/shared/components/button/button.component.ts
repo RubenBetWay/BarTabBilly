@@ -9,31 +9,45 @@ import { Router } from '@angular/router';
 })
 export class ButtonComponent {
   @Input() config: ButtonConfig | undefined;
-  @Output() onClick: EventEmitter<ButtonConfig> = new EventEmitter()
+  @Output() onClick: EventEmitter<ButtonConfig> = new EventEmitter();
 
   button = document.querySelector('.ripple-button') as HTMLButtonElement;
-  customStyling: object = {}
+  customStyling: {[key:string]: string} = {};
 
-constructor(private router: Router){}
+  constructor(private router: Router) {}
 
-  ngOnInit(){
-    if (!this.config) return
+  ngOnInit() {
+    if (!this.config) return;
     switch (this.config.size) {
-      case (ButtonSize.Large): {
-        this.customStyling = {width: '80%', height: '80px'}
+      case ButtonSize.Large: {
+        this.customStyling = { 
+          width: '80%', 
+          height: '80px', 
+          margin: '8px' 
+        };
+        break
       }
+      case ButtonSize.Small: {
+        this.customStyling = { 
+          width: '120px', 
+          height: '16px', 
+          margin: '4px' 
+        };
+        break
+      }
+    }
+    if (this.config.color) {
+      this.customStyling['background-color'] = this.config.color
     }
   }
 
   onButtonClick(event: MouseEvent) {
-    this.rippleButton(event)
-    if (this.config?.url) 
-      this.router.navigate([this.config?.url])
-    else
-      this.onClick.emit(this.config)
+    this.rippleButton(event);
+    if (this.config?.url) this.router.navigate([this.config?.url]);
+    else this.onClick.emit(this.config);
   }
 
-  private rippleButton(event: MouseEvent){
+  private rippleButton(event: MouseEvent) {
     const button = event.currentTarget as HTMLButtonElement;
     const rect = button.getBoundingClientRect();
     const size = Math.max(rect.width, rect.height);
