@@ -19,21 +19,3 @@
 .button:hover {
   background-color: aqua;
 }
-
-.ripple {
-  position: absolute;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.6);
-  transform: scale(0);
-  animation: ripple-animation 0.1s linear;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-@keyframes ripple-animation {
-  to {
-    transform: scale(4);
-    opacity: 0;
-  }
-}
