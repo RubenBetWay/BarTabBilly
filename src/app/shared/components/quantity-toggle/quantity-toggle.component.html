@@ -1,0 +1,5 @@
+<div class="quantity-toggle">
+  <button class="button" (click)="decrement()" [disabled]="quantity <= 0">-</button>
+  <div class="quantity">{{ quantity }}</div>
+  <button class="button"  (click)="increment()">+</button>
+</div>
