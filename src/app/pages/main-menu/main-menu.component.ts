@@ -3,7 +3,7 @@ import {
   ButtonConfig,
   ButtonSize,
 } from 'src/app/shared/components/button/button.model';
-import { PersistenceService } from 'src/app/shared/services/persistence/persistence.service';
+import { DataService } from 'src/app/shared/services/data/data.service';
 import { OpenButton, OrderButton, SettleButton } from './main-menu.const';
 
 @Component({
@@ -14,8 +14,8 @@ import { OpenButton, OrderButton, SettleButton } from './main-menu.const';
 export class MainMenuPage {
   menuOptions: ButtonConfig[] = [];
 
-  constructor(private persistenceService: PersistenceService) {
-    if (persistenceService.hasData)
+  constructor(private dataService: DataService) {
+    if (dataService.hasData)
       this.menuOptions = [OpenButton, OrderButton, SettleButton];
     else this.menuOptions = [OpenButton];
   }
