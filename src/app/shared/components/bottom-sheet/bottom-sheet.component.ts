@@ -6,10 +6,10 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   styleUrls: ['./bottom-sheet.component.scss']
 })
 export class BottomSheetComponent {
-  @Input() isOpen: boolean = false; // Control visibility from parent
-  @Output() closeSheet = new EventEmitter<void>(); // Emit event when closing
+  @Input() isOpen: boolean = false;
+  @Output() closeSheet = new EventEmitter<void>(); 
 
   close() {
-    this.closeSheet.emit(); // Notify parent to close the sheet
+    this.closeSheet.emit();
   }
 }
