@@ -9,6 +9,7 @@ import { SettleTabPageComponent } from './pages/settle-tab-page/settle-tab-page.
 import { MainMenuPageComponent } from './pages/main-menu-page/main-menu-page.component';
 import { StockItemCardComponent } from './shared/components/stock-item-card/stock-item-card.component';
 import { ExpandableTextContainerComponent } from './shared/components/expandable-text-container/expandable-text-container.component';
+import { QuantityToggleComponent } from './shared/components/quantity-toggle/quantity-toggle.component';
 
 @NgModule({
   declarations: [
@@ -21,8 +22,9 @@ import { ExpandableTextContainerComponent } from './shared/components/expandable
 
     // Shared component
     ButtonComponent,
-     StockItemCardComponent,
-     ExpandableTextContainerComponent,
+    StockItemCardComponent,
+    ExpandableTextContainerComponent,
+    QuantityToggleComponent
   ],
   imports: [
     BrowserModule,
