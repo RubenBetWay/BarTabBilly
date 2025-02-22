@@ -22,7 +22,7 @@ export class StockItemCardComponent {
 
   onAddClick() {
     if (this.quantityToggleComponent) {
-      this.quantityToggleComponent.resetToZero(); 
+      this.quantityToggleComponent.resetToZero();
     } else {
       console.error('QuantityToggleComponent is not available!');
     }
