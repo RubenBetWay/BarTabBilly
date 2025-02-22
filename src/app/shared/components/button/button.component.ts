@@ -42,7 +42,14 @@ export class ButtonComponent {
           margin: '2px',
           'font-size': '10px',
           padding: '16px 0px',
-
+        };
+        break
+      }
+      case ButtonSize.Wide: {
+        this.customStyling = { 
+          'min-width': '80%', 
+          margin: '8px',
+          padding: '8px 16px',
         };
         break
       }
@@ -52,29 +59,7 @@ export class ButtonComponent {
     }
   }
 
-  onButtonClick(event: MouseEvent) {
-    this.rippleButton(event);
+  onButtonClick() {
     if (this.config?.url) this.router.navigate([this.config?.url]);
     else this.onClick.emit(this.config);
-  }
-
-  private rippleButton(event: MouseEvent) {
-    const button = event.currentTarget as HTMLButtonElement;
-    const rect = button.getBoundingClientRect();
-    const size = Math.max(rect.width, rect.height);
-    const x = event.clientX - rect.left - size / 2;
-    const y = event.clientY - rect.top - size / 2;
-
-    const ripple = document.createElement('span');
-    ripple.style.width = ripple.style.height = `${size}px`;
-    ripple.style.left = `${x}px`;
-    ripple.style.top = `${y}px`;
-
-    ripple.classList.add('ripple');
-    button.appendChild(ripple);
-
-    ripple.addEventListener('animationend', () => {
-      ripple.remove();
-    });
-  }
-}
+  }}
