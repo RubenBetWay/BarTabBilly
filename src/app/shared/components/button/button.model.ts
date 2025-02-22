@@ -6,6 +6,7 @@ export interface ButtonConfig {
 }
 
 export enum ButtonSize {
+  XSmall,
   Small,
   Large
 }

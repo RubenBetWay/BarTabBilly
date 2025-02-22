@@ -35,6 +35,17 @@ export class ButtonComponent {
         };
         break
       }
+      case ButtonSize.XSmall: {
+        this.customStyling = { 
+          width: '100px', 
+          height: '10px', 
+          margin: '2px',
+          'font-size': '10px',
+          padding: '16px 0px',
+
+        };
+        break
+      }
     }
     if (this.config.color) {
       this.customStyling['background-color'] = this.config.color
