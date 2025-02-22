@@ -1,1 +1,7 @@
-<p>open-tab-confirmed works!</p>
+<div class="container">
+  <div class="sub-header">Great stuff!<br>Your tab is now open, what would you
+    like to to do next?</div>
+  <app-button class="button" *ngFor="let config of options" [config]="config"
+    (onClick)="onAnswer.emit(config.name)">
+  </app-button>
+</div>
