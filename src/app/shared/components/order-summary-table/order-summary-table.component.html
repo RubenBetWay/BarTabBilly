@@ -1,0 +1,21 @@
+<table class="items-table">
+  <tr class="items-table-row">
+    <th class="item-column">Item</th>
+    <th class="number-column">Qty</th>
+    <th class="price-column">Price</th>
+    <th class="price-column">Total</th>
+  </tr>
+  <tr class="items-table-row" *ngFor="let item of orderItems">
+    <td class="item-column">{{item.title}}</td>
+    <td class="number-column">{{item.qty}}</td>
+    <td class="price-column">{{item.price | number: '1.2-2'}}</td>
+    <td class="price-column">{{item.qty * item.price | number: '1.2-2'}}
+    </td>
+  </tr>
+  <tr class="items-table-row total-row">
+    <th class="item-column">Order Total</th>
+    <th class="number-column"></th>
+    <th class="price-column"></th>
+    <th class="price-column">{{orderTotal | number: '1.2-2'}}</th>
+  </tr>
+</table>
