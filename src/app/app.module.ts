@@ -14,6 +14,11 @@ import { BottomSheetComponent } from './shared/components/bottom-sheet/bottom-sh
 import { OrderSummaryView } from './shared/views/order-summary/order-summary.component';
 import { OrderSummaryTableComponent } from './shared/components/order-summary-table/order-summary-table.component';
 import { OpenTabPage } from './pages/open-tab/open-tab.component';
+import { InitialComponent } from './pages/open-tab/views/inital/initial.component';
+import { AddTabPartiesComponent } from './pages/open-tab/views/add-tab-parties/add-tab-parties.component';
+import { AddFriendComponent } from './pages/open-tab/views/add-friend/add-friend.component';
+import { OpenTabConfirmationComponent } from './pages/open-tab/views/open-tab-confirmation/open-tab-confirmation.component';
+import { OpenTabConfirmedComponent } from './pages/open-tab/views/open-tab-confirmed/open-tab-confirmed.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +40,11 @@ import { OpenTabPage } from './pages/open-tab/open-tab.component';
     QuantityToggleComponent,
     BottomSheetComponent,
     OrderSummaryTableComponent,
+    InitialComponent,
+    AddTabPartiesComponent,
+    AddFriendComponent,
+    OpenTabConfirmationComponent,
+    OpenTabConfirmedComponent,
   ],
   imports: [
     BrowserModule,

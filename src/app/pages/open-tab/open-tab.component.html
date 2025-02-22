@@ -1,1 +1,6 @@
-<p>open-tab works!</p>
+<div class="container">
+  <div class="logo">Open Tab</div>
+  <div class="sub-view-container" [ngSwitch]="currentViewState">
+    <app-initial class="sub-view" *ngSwitchCase="viewState.Initial"></app-initial>
+  </div>
+</div>
