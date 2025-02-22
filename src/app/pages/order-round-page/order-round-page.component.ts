@@ -2,6 +2,8 @@ import { Component, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
 import { OrderInstruction } from 'src/app/shared/components/stock-item-card/stock-item-card.model';
 import { StockItemCardConfigs } from './order-round-page.const';
 import { BottomSheetComponent } from 'src/app/shared/components/bottom-sheet/bottom-sheet.component';
+import { OrderItem } from 'src/app/shared/views/order-summary/order-summary.model';
+import { OrderSummaryComponent } from 'src/app/shared/views/order-summary/order-summary.component';
 
 @Component({
   selector: 'app-order-round-page',
@@ -11,11 +13,13 @@ import { BottomSheetComponent } from 'src/app/shared/components/bottom-sheet/bot
 export class OrderRoundPageComponent implements AfterViewInit {
   @ViewChild('bottomSheet') bottomSheet!: BottomSheetComponent;
   @ViewChild('bottomSheet', { read: ElementRef }) bottomSheetRef!: ElementRef;
+  @ViewChild('orderSummary') orderSummary!: OrderSummaryComponent;
 
   stockItemCardConfigs = StockItemCardConfigs;
-  showBottomSheet = false;
+  showBottomSheet = true;
   bottomSheetHeight = 0;
   extraSpaceStyling = {};
+  orderItems: OrderItem[] = [];
 
   ngAfterViewInit() {
     if (this.bottomSheetRef?.nativeElement) {
@@ -26,7 +30,20 @@ export class OrderRoundPageComponent implements AfterViewInit {
   }
 
   onOrderInstruction(orderInstruction: OrderInstruction) {
-    console.log(orderInstruction);
+    this.updateOrder(orderInstruction);
+    this.renderBottomSheet();
+  }
+
+  private updateOrder(orderInstruction: OrderInstruction) {
+    this.orderItems.push({
+      title: orderInstruction.title,
+      price: orderInstruction.price,
+      qty: orderInstruction.qty,
+    });
+    this.orderSummary.updateOrder(this.orderItems);
+  }
+
+  private renderBottomSheet() {
     this.showBottomSheet = true;
     setTimeout(() => {
       if (this.bottomSheetRef?.nativeElement) {

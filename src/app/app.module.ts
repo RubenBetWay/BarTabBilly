@@ -11,6 +11,7 @@ import { StockItemCardComponent } from './shared/components/stock-item-card/stoc
 import { ExpandableTextContainerComponent } from './shared/components/expandable-text-container/expandable-text-container.component';
 import { QuantityToggleComponent } from './shared/components/quantity-toggle/quantity-toggle.component';
 import { BottomSheetComponent } from './shared/components/bottom-sheet/bottom-sheet.component';
+import { OrderSummaryComponent } from './shared/views/order-summary/order-summary.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { BottomSheetComponent } from './shared/components/bottom-sheet/bottom-sh
     StockItemCardComponent,
     ExpandableTextContainerComponent,
     QuantityToggleComponent,
-    BottomSheetComponent
+    BottomSheetComponent,
+    OrderSummaryComponent
   ],
   imports: [
     BrowserModule,
