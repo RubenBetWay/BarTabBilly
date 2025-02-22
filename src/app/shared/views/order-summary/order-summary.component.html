@@ -8,14 +8,26 @@
     </div>
   </div>
   <div [ngClass]="{'show': showDetails}" class="details-section">
-    t is a long established fact that a reader will be distracted by the
-    readable content of a page when looking at its layout. The point of using
-    Lorem Ipsum is that it has a more-or-less normal distribution of letters, as
-    opposed to using 'Content here, content here', making it look like readable
-    English. Many desktop publishing packages and web page editors now use Lorem
-    Ipsum as their default model text, and a search for 'lorem ipsum' will
-    uncover many web sites still in their infancy. Various versions have evolved
-    over the years, sometimes by accident, sometimes on purpose (injected humour
-    and the like).
+    <table class="items-table">
+      <tr class="items-table-row">
+        <th class="item-column">Item</th>
+        <th class="number-column">Qty</th>
+        <th class="price-column">Price</th>
+        <th class="price-column">Total</th>
+      </tr>
+      <tr class="items-table-row" *ngFor="let item of orderItems">
+        <td class="item-column">{{item.title}}</td>
+        <td class="number-column">{{item.qty}}</td>
+        <td class="price-column">{{item.price | number: '1.2-2'}}</td>
+        <td class="price-column">{{item.qty * item.price | number: '1.2-2'}}
+        </td>
+      </tr>
+      <tr class="items-table-row">
+        <th class="item-column"></th>
+        <th class="number-column"></th>
+        <th class="price-column"></th>
+        <th class="price-column">{{orderTotal | number: '1.2-2'}}</th>
+      </tr>
+    </table>
   </div>
 </div>

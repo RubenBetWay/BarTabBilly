@@ -21,6 +21,34 @@
   overflow: hidden;
   opacity: 0;
   transition: max-height 0.3s ease-out, opacity 0.3s ease-out, padding 0.3s ease-out;
+
+  .items-table {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    &-row{
+      display: flex;
+      flex-direction: row;
+      width: 100%;
+      justify-content: space-between;
+
+      .item-column {
+        width: 200%;
+        text-align: start;
+      }
+
+      .number-column {
+        width: 100%;
+        text-align: center;
+      }
+
+      .price-column {
+        width: 100%;
+        text-align: end;
+      }
+    }
+  }
 }
 
 .details-section.show {
@@ -28,3 +56,5 @@
   opacity: 1;
   padding: 8px;
 }
+
+
