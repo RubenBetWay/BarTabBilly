@@ -1,13 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { OrderRoundPageComponent } from './pages/order-round-page/order-round-page.component';
-import { SettleTabPageComponent } from './pages/settle-tab-page/settle-tab-page.component';
-import { MainMenuPageComponent } from './pages/main-menu-page/main-menu-page.component';
+import { OrderRoundPage } from './pages/order-round/order-round.component';
+import { SettleTabPage } from './pages/settle-tab/settle-tab.component';
+import { MainMenuPage } from './pages/main-menu/main-menu.component';
 
 const routes: Routes = [
-  { path: '', component: MainMenuPageComponent, title: 'Bar Tab Billy' },
-  { path: 'order', component: OrderRoundPageComponent, title: 'BTB | Order' },
-  { path: 'settle', component: SettleTabPageComponent, title: 'BTB | Settle' },
+  { path: '', component: MainMenuPage, title: 'Bar Tab Billy' },
+  { path: 'open', component: OrderRoundPage, title: 'BTB | Order' },
+  { path: 'order', component: OrderRoundPage, title: 'BTB | Order' },
+  { path: 'settle', component: SettleTabPage, title: 'BTB | Settle' },
 ];
 
 @NgModule({

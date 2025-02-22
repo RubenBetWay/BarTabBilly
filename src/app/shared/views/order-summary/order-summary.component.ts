@@ -21,7 +21,7 @@ import { OrderSummaryTableComponent } from '../../components/order-summary-table
   templateUrl: './order-summary.component.html',
   styleUrls: ['./order-summary.component.scss'],
 })
-export class OrderSummaryComponent {
+export class OrderSummaryView {
   @Output() orderPlaced: EventEmitter<void> = new EventEmitter();
 
   orderItems: OrderItem[] = [];
