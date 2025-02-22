@@ -1,6 +1,18 @@
 <div class="container">
   <div class="logo">Open Tab</div>
   <div class="sub-view-container" [ngSwitch]="currentViewState">
-    <app-initial class="sub-view" *ngSwitchCase="viewState.Initial"></app-initial>
+    <app-initial 
+      *ngSwitchCase="viewState.Initial"
+      class="sub-view" 
+      (onAnswer)="onInitialAnswer($event)">
+    </app-initial>
+    <app-add-tab-parties
+      *ngSwitchCase="viewState.AddTabParties"
+      class="sub-view">
+    </app-add-tab-parties>
+    <app-open-tab-confirmation
+      *ngSwitchCase="viewState.Confirmation"
+      class="sub-view">
+    </app-open-tab-confirmation>
   </div>
 </div>
