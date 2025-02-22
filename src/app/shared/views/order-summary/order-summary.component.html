@@ -1,0 +1,9 @@
+<div class="super-summary">
+  <div>Order total: R {{this.orderTotal | number: '1.2-2'}}</div>
+  <div class="buttons-container">
+    <app-button 
+      *ngFor="let config of superSummaryButtons" 
+      [config]="config">
+    </app-button>
+  </div>
+</div>
