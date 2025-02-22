@@ -13,6 +13,7 @@ import { QuantityToggleComponent } from './shared/components/quantity-toggle/qua
 import { BottomSheetComponent } from './shared/components/bottom-sheet/bottom-sheet.component';
 import { OrderSummaryView } from './shared/views/order-summary/order-summary.component';
 import { OrderSummaryTableComponent } from './shared/components/order-summary-table/order-summary-table.component';
+import { OpenTabPage } from './pages/open-tab/open-tab.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { OrderSummaryTableComponent } from './shared/components/order-summary-ta
 
     // Pages
     MainMenuPage,
+    OpenTabPage,
     OrderRoundPage,
     SettleTabPage,
 
@@ -32,7 +34,7 @@ import { OrderSummaryTableComponent } from './shared/components/order-summary-ta
     ExpandableTextContainerComponent,
     QuantityToggleComponent,
     BottomSheetComponent,
-    OrderSummaryTableComponent
+    OrderSummaryTableComponent,
   ],
   imports: [
     BrowserModule,

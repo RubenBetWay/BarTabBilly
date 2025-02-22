@@ -16,7 +16,7 @@ export class MainMenuPage {
 
   constructor(private persistenceService: PersistenceService) {
     if (persistenceService.hasData)
-      this.menuOptions = [OrderButton, SettleButton];
+      this.menuOptions = [OpenButton, OrderButton, SettleButton];
     else this.menuOptions = [OpenButton];
   }
 }
