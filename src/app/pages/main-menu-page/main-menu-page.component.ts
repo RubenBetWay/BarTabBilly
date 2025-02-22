@@ -9,11 +9,13 @@ import { ButtonConfig, ButtonSize } from 'src/app/shared/components/button/butto
 export class MainMenuPageComponent {
    menuOptions: ButtonConfig[] = [
     { 
+      name: 'order',
       text: 'Order Round', 
       size: ButtonSize.Large, 
       url: 'order' 
     },
     { 
+      name: 'settle',
       text: 'Settle Tab', 
       size: ButtonSize.Large, 
       url: 'settle' 

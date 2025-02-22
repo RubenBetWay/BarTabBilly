@@ -1,11 +1,30 @@
+.main-container {
+  display: flex;
+  flex-direction: column;
+  height: fit-content;
+}
+
 .super-summary {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+}
 
-  .buttons-container {
-    display: flex;
-    flex-direction: row;
-  }
+.buttons-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.details-section {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.3s ease-out, opacity 0.3s ease-out, padding 0.3s ease-out;
+}
+
+.details-section.show {
+  max-height: 50vh; /* Adjust based on content */
+  opacity: 1;
+  padding: 8px;
 }

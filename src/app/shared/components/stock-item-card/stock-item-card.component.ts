@@ -18,6 +18,7 @@ export class StockItemCardComponent {
   qty = 0
   subtotal: number = 0;
   addButtonConfig: ButtonConfig = {
+    name: 'add',
     text: 'Add',
     size: ButtonSize.Small,
     color: 'aquamarine',
