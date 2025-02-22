@@ -1,0 +1,19 @@
+.quantity-toggle {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: center;
+
+  .button {
+    padding: 5px 10px;
+    font-size: 18px;
+    cursor: pointer;
+  }
+
+  .quantity {
+    margin: 0 16px;
+    font-size: 18px;
+    font-weight: bold;
+  }
+}
+
