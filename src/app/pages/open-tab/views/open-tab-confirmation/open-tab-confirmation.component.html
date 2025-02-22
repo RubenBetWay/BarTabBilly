@@ -1,2 +1,10 @@
-
-<div *ngIf="isJustMe"></div>
+<div class="container" *ngIf="isJustMe">
+  <div class="sub-header">Please confirm that the tab you are about to open will
+    be settle by yourself</div>
+    <app-button 
+    class="button" 
+    *ngFor="let config of options"
+    [config]="config"
+    (onClick)="onAnswer.emit(config.name)">
+  </app-button>
+</div>

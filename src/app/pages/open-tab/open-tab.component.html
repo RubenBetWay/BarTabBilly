@@ -12,7 +12,14 @@
     </app-add-tab-parties>
     <app-open-tab-confirmation
       *ngSwitchCase="viewState.Confirmation"
-      class="sub-view">
+      class="sub-view"
+      [isJustMe]="isJustMe"
+      (onAnswer)="onConfirmationResponse($event)">
     </app-open-tab-confirmation>
+    <app-open-tab-confirmed
+      *ngSwitchCase="viewState.Confirmed"
+      class="sub-view"
+      (onAnswer)="onConfirmedResponse($event)">
+    </app-open-tab-confirmed>
   </div>
 </div>
