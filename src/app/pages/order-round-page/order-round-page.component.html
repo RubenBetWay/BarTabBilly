@@ -1,4 +1,4 @@
-<div class="container">
+<div *ngIf="!isOrderConfirmation" class="container">
   <div class="logo">Order Round</div>
   <app-stock-item-card
   class="card" 
@@ -9,6 +9,14 @@
   <div [ngStyle]="extraSpaceStyling"></div>
 </div>
 
+<div *ngIf="isOrderConfirmation" class="container">
+  <div class="logo">Confirm Order</div>
+  <app-order-summary-table 
+    class="order-summary-table"
+    [orderItems]="orderItems">
+  </app-order-summary-table>
+</div>
+
 <!-- Bottom Sheet Component -->
 <app-bottom-sheet
   #bottomSheet
@@ -17,5 +25,7 @@
 >
   <app-order-summary
   #orderSummary
+  (orderPlaced)="onOrderPlaced()"
   ></app-order-summary>
 </app-bottom-sheet>
+

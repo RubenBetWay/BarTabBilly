@@ -16,10 +16,11 @@ export class OrderRoundPageComponent implements AfterViewInit {
   @ViewChild('orderSummary') orderSummary!: OrderSummaryComponent;
 
   stockItemCardConfigs = StockItemCardConfigs;
-  showBottomSheet = true;
+  showBottomSheet = false;
   bottomSheetHeight = 0;
   extraSpaceStyling = {};
   orderItems: OrderItem[] = [];
+  isOrderConfirmation = false
 
   ngAfterViewInit() {
     if (this.bottomSheetRef?.nativeElement) {
@@ -32,6 +33,11 @@ export class OrderRoundPageComponent implements AfterViewInit {
   onOrderInstruction(orderInstruction: OrderInstruction) {
     this.updateOrder(orderInstruction);
     this.renderBottomSheet();
+  }
+
+  onOrderPlaced(){
+    this.isOrderConfirmation = true
+    this.showBottomSheet = false
   }
 
   private updateOrder(orderInstruction: OrderInstruction) {
