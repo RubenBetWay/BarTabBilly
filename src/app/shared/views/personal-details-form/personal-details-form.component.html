@@ -1,0 +1,26 @@
+<div class="container">
+  <form class="form" [formGroup]="personalDetailsForm">
+    <div class="form-fields-section">
+      <div class="form-field" *ngFor="let field of formFields">
+        <label [for]="field.name">{{ field.label }}</label>
+        <input [id]="field.name" type="text" [formControlName]="field.name">
+      </div>
+    </div>
+ 
+    <div *ngFor="let config of conditionalOptions" >
+      <app-button 
+        class="button" 
+        *ngIf="personalDetailsForm.valid"
+        [config]="config"
+        (onClick)="onButtonClick(config.name)">
+      </app-button>
+    </div>
+
+    <app-button 
+      class="button" 
+      *ngFor="let config of standardOptions"
+      [config]="config"
+      (onClick)="onButtonClick(config.name)">
+    </app-button>
+  </form>
+</div>
