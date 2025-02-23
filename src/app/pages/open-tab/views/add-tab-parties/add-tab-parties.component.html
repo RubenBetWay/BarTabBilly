@@ -4,7 +4,42 @@
   <app-button 
     class="button" 
     *ngFor="let config of noFriendsOptions"
-    [config]="config"
+    [config]="config" 
     (onClick)="onAnswer.emit(config.name)">
+  </app-button>
+</div>
+
+<div class="container" *ngIf="hasFriends">
+  <div class="sub-header">Please settle the friends you would like to split this
+    tab with</div>
+  <div class="section-header">Selected Friends</div>
+  <div class="list-container">
+    <div 
+      class="friend-container aquamarine"
+      *ngFor="let friend of selectedFriends"
+      (click)="unselectFriend(friend)">
+      <div>{{friend.firstName}} {{friend.lastName}}</div>
+      <div>-</div>
+    </div>
+  </div>
+  <div class="section-header">Available Friends</div>
+  <div class="list-container">
+    <div 
+      class="friend-container lightblue"
+      *ngFor="let friend of availableFriends"
+      (click)="selectFriend(friend)">
+      <div>{{friend.firstName}} {{friend.lastName}}</div>
+      <div>+</div>
+    </div>
+  </div>
+  <div class="action-buttons-container"></div>
+  <app-button 
+    *ngIf="selectedFriends.length > 0"
+    class="button" 
+    [config]="doneButton">
+  </app-button>
+  <app-button 
+    class="button" 
+    [config]="justMeWideButton">
   </app-button>
 </div>

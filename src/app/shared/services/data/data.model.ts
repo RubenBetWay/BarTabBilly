@@ -3,7 +3,11 @@ import { PersonalDetails } from "../../views/personal-details-form/personal-deta
 export interface AppData {
   userDetails: PersonalDetails
   tabs: TabData[]
-  friends: PersonalDetails[]
+  friends: Friend[]
+}
+
+export interface Friend extends PersonalDetails {
+  id: string
 }
 
 export interface TabData {

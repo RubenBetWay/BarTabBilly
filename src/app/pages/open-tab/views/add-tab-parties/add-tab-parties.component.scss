@@ -1,6 +1,6 @@
 .container {
   display: flex;
-  height: 100vh;
+  height: calc(100vh - 100px);
   width: 100%;
   flex-direction: column;
   align-items: center;
@@ -9,11 +9,55 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size:large;
+    font-size: large;
     min-height: 50px;
     width: 80%;
     text-align: center;
     padding-bottom: 16px;
+  }
+
+  .section-header {
+    display: flex;
+    width: 80%;
+    font-weight: bold;
+    text-decoration: underline;
+    padding: 24px 0 8px 0;
+  }
+
+  .list-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+    height: 25%;
+    max-height: 25%;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+    overflow: auto;
+
+    .friend-container {
+      display: flex;
+      width: 90%;
+      padding: 8px;
+      margin: 4px 8px;
+      box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+      justify-content: space-between;
+    }
+
+    .aquamarine {
+      background-color: aquamarine;
+    }
+
+    .lightblue {
+      background-color: lightblue;
+    }
+  }
+
+  .action-buttons-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    padding: 16px 0;
   }
 
   .button {

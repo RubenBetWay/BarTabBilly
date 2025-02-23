@@ -17,4 +17,23 @@ export const JustMeButton: ButtonConfig = {
   text: 'Change it to Just Me', 
   size: ButtonSize.Large, 
   color: 'lightblue',
+} 
+
+export enum SelectedFriendsActions {
+  Done = 'done',
+  JustMe = 'just-me',
+} 
+
+export const DoneButton: ButtonConfig = {
+  name: SelectedFriendsActions.Done,
+  text: 'All Done', 
+  size: ButtonSize.Wide, 
+  color: 'aquamarine',
+}  
+
+export const JustMeWideButton: ButtonConfig = {
+  name: SelectedFriendsActions.JustMe,
+  text: 'Changed my mind, Just Me', 
+  size: ButtonSize.Wide, 
+  color: 'lightblue',
 }  
