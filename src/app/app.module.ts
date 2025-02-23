@@ -19,6 +19,8 @@ import { AddTabPartiesComponent } from './pages/open-tab/views/add-tab-parties/a
 import { AddFriendComponent } from './pages/open-tab/views/add-friend/add-friend.component';
 import { OpenTabConfirmationComponent } from './pages/open-tab/views/open-tab-confirmation/open-tab-confirmation.component';
 import { OpenTabConfirmedComponent } from './pages/open-tab/views/open-tab-confirmed/open-tab-confirmed.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { PersonalDetailsFormView } from './shared/views/personal-details-form/personal-details-form.component';
 
 @NgModule({
   declarations: [
@@ -45,10 +47,12 @@ import { OpenTabConfirmedComponent } from './pages/open-tab/views/open-tab-confi
     AddFriendComponent,
     OpenTabConfirmationComponent,
     OpenTabConfirmedComponent,
+    PersonalDetailsFormView,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

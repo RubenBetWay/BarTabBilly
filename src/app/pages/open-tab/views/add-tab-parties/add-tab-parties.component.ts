@@ -19,7 +19,8 @@ export class AddTabPartiesComponent {
     if (!dataService.hasData) return; // hasFriends remains false
 
     // At this point we have confirmed this - but lets keep it tight
-    if (this.dataService.data)
+    if (this.dataService.data) {
       this.hasFriends = this.dataService.data.friends.length > 0;
+    }
   }
 }

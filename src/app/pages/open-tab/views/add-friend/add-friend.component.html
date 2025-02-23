@@ -1,1 +1,7 @@
-<p>add-friend works!</p>
+<div class="container">
+  <app-personal-details-form 
+    class="form"
+    (onFormSubmitted)="onFriendAdded($event)"
+    (done)="done.emit()">
+  </app-personal-details-form>
+</div>

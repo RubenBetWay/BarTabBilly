@@ -1,12 +1,9 @@
-export interface AppData {
-  userDetails: UserDetails
-  tabs: TabData[]
-  friends: UserDetails[]
-}
+import { PersonalDetails } from "../../views/personal-details-form/personal-details-form.model"
 
-export interface UserDetails {
-  firstName: string,
-  lastName: string,
+export interface AppData {
+  userDetails: PersonalDetails
+  tabs: TabData[]
+  friends: PersonalDetails[]
 }
 
 export interface TabData {
@@ -17,7 +14,9 @@ export interface TabData {
 export const InitialData: AppData = {
   userDetails: {
     firstName: '',
-    lastName: ''
+    lastName: '',
+    email: '',
+    number: ''
   },
   friends: [],
   tabs: []

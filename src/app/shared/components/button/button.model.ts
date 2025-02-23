@@ -1,9 +1,9 @@
 export interface ButtonConfig {
-  name: string
-  text: string
-  size: ButtonSize
-  url?: string
-  color?: string
+  name: string;
+  text: string;
+  size: ButtonSize;
+  url?: string;
+  color?: string;
 }
 
 export enum ButtonSize {
@@ -12,3 +12,4 @@ export enum ButtonSize {
   Large,
   Wide,
 }
+

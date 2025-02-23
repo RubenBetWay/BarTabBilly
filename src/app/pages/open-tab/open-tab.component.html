@@ -13,7 +13,8 @@
     </app-add-tab-parties>
     <app-add-friend
       *ngSwitchCase="viewState.AddFriend"
-      class="sub-view">
+      class="sub-view"
+      (done)="onDoneAddingFriends()">
     </app-add-friend>
     <app-open-tab-confirmation
       *ngSwitchCase="viewState.Confirmation"

@@ -48,6 +48,10 @@ export class OpenTabPage {
     }
   }
 
+  onDoneAddingFriends(){
+    this.currentViewState = OpenTabViewState.AddTabParties;
+  }
+
   onConfirmationResponse(answer: string) {
     switch (answer as ConfirmationResponse) {
       case ConfirmationResponse.Confirm: {

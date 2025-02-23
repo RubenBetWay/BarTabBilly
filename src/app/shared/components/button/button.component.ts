@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 })
 export class ButtonComponent {
   @Input() config: ButtonConfig | undefined;
+
   @Output() onClick: EventEmitter<ButtonConfig> = new EventEmitter();
 
   button = document.querySelector('.ripple-button') as HTMLButtonElement;
