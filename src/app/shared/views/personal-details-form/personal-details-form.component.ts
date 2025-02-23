@@ -49,6 +49,7 @@ export class PersonalDetailsFormView {
         this.onFormSubmitted.emit(
           this.personalDetailsForm.value as PersonalDetails
         );
+        this.personalDetailsForm.reset();
         break;
       }
       case PersonalDetailsFromResponse.Close: {
