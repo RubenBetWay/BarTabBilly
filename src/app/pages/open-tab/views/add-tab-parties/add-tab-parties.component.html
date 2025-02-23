@@ -1,1 +1,10 @@
-<p>add-tab-parties works!</p>
+<div class="container">
+  <div class="sub-header">It seems that you don't have any friends just yet that
+    you can add to the tab split. <br><br>What would you like to do?</div>
+  <app-button 
+    class="button" 
+    *ngFor="let config of noFriendsOptions"
+    [config]="config"
+    (onClick)="onAnswer.emit(config.name)">
+  </app-button>
+</div>

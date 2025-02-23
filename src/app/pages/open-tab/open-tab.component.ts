@@ -5,6 +5,7 @@ import { ConfirmationResponse } from './views/open-tab-confirmation/open-tab-con
 import { DataService } from 'src/app/shared/services/data/data.service';
 import { ConfirmedResponse } from './views/open-tab-confirmed/open-tab-confirmed.const';
 import { Route, Router } from '@angular/router';
+import { NoFriendsQuestionResponse } from './views/add-tab-parties/add-tab-parties.const';
 
 @Component({
   selector: 'app-open-tab',
@@ -28,6 +29,20 @@ export class OpenTabPage {
       case OpenTabInitialAnswer.WithFriends: {
         this.currentViewState = OpenTabViewState.AddTabParties;
         this.isJustMe = false;
+        break;
+      }
+    }
+  }
+
+  onNoFriendsAnswer(answer: string){
+    switch (answer as NoFriendsQuestionResponse) {
+      case NoFriendsQuestionResponse.Add: {
+        this.currentViewState = OpenTabViewState.AddFriend;
+        break;
+      }
+      case NoFriendsQuestionResponse.JustMe: {
+        this.currentViewState = OpenTabViewState.Confirmation;
+        this.isJustMe = true;
         break;
       }
     }

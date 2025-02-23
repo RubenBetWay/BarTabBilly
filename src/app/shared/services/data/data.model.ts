@@ -1,6 +1,7 @@
 export interface AppData {
   userDetails: UserDetails
   tabs: TabData[]
+  friends: UserDetails[]
 }
 
 export interface UserDetails {
@@ -18,5 +19,7 @@ export const InitialData: AppData = {
     firstName: '',
     lastName: ''
   },
+  friends: [],
   tabs: []
 }  
+
