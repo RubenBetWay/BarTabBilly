@@ -14,6 +14,8 @@ export interface TabData {
   id: string
   isJustMe: boolean,
   addedParties: Friend[]
+  isSettled: boolean
+  openTimeStamp: Date
 }
 
 export const InitialData: AppData = {

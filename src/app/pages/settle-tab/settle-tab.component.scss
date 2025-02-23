@@ -1,0 +1,27 @@
+.container {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+
+  .header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size:xx-large;
+    height: 100px;
+    min-height: 100px;
+  }
+
+  .sub-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: large;
+    min-height: 50px;
+    width: 80%;
+    text-align: center;
+    padding-bottom: 16px;
+  }
+}

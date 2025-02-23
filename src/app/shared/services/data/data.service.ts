@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AppData, Friend, InitialData } from './data.model';
+import { AppData, Friend, InitialData, TabData } from './data.model';
 import { IdGeneratorService } from '../id-generator/id-generator.service';
 import { PersonalDetails } from '../../views/personal-details-form/personal-details-form.model';
 
@@ -27,7 +27,9 @@ export class DataService {
     this.data?.tabs.push({
       id: this.idGeneratorService.generateRandomID(),
       isJustMe: isJustMe,
-      addedParties: addedParties
+      addedParties: addedParties,
+      isSettled: false,
+      openTimeStamp: new Date()
     });
     this.writeData(this.data!);
   }

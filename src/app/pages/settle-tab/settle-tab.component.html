@@ -1,1 +1,5 @@
-<p>settle-tab-page works!</p>
+<div class="container">
+  <div class="header">Settle Tab</div>
+  <div class="sub-header">Please select the tab you would like to settle</div>
+  <div *ngFor="let tab of openTabs">{{tab.id}}</div>
+</div>
