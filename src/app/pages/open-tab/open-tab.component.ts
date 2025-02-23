@@ -6,6 +6,7 @@ import { DataService } from 'src/app/shared/services/data/data.service';
 import { ConfirmedResponse } from './views/open-tab-confirmed/open-tab-confirmed.const';
 import { Route, Router } from '@angular/router';
 import { NoFriendsQuestionResponse } from './views/add-tab-parties/add-tab-parties.const';
+import { Friend } from 'src/app/shared/services/data/data.model';
 
 @Component({
   selector: 'app-open-tab',
@@ -16,6 +17,7 @@ export class OpenTabPage {
   viewState = OpenTabViewState;
   currentViewState = OpenTabViewState.Initial;
   isJustMe = false;
+  addedParties: Friend[] = []
 
   constructor(private dataService: DataService, private router: Router) {}
 
@@ -48,6 +50,11 @@ export class OpenTabPage {
     }
   }
 
+  onTabPartiesSelected(addedParties: Friend[]){
+    this.addedParties = addedParties
+    this.currentViewState = OpenTabViewState.Confirmation;
+  }
+
   onDoneAddingFriends(){
     this.currentViewState = OpenTabViewState.AddTabParties;
   }
@@ -56,7 +63,7 @@ export class OpenTabPage {
     switch (answer as ConfirmationResponse) {
       case ConfirmationResponse.Confirm: {
         this.currentViewState = OpenTabViewState.Confirmed;
-        this.dataService.openTab(this.isJustMe);
+        this.dataService.openTab(this.isJustMe, this.addedParties);
         break;
       }
       case ConfirmationResponse.Reject: {

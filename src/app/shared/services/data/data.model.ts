@@ -12,7 +12,8 @@ export interface Friend extends PersonalDetails {
 
 export interface TabData {
   id: string
-  isJustMe: boolean
+  isJustMe: boolean,
+  addedParties: Friend[]
 }
 
 export const InitialData: AppData = {

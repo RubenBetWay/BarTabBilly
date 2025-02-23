@@ -9,7 +9,8 @@
     <app-add-tab-parties
       *ngSwitchCase="viewState.AddTabParties"
       class="sub-view"
-      (onAnswer)="onNoFriendsAnswer($event)">
+      (onNoFriendsAnswer)="onNoFriendsAnswer($event)"
+      (onListSubmitted)="onTabPartiesSelected($event)">
     </app-add-tab-parties>
     <app-add-friend
       *ngSwitchCase="viewState.AddFriend"
@@ -20,6 +21,7 @@
       *ngSwitchCase="viewState.Confirmation"
       class="sub-view"
       [isJustMe]="isJustMe"
+      [addedParties]="addedParties"
       (onAnswer)="onConfirmationResponse($event)">
     </app-open-tab-confirmation>
     <app-open-tab-confirmed

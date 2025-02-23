@@ -19,7 +19,7 @@ export class DataService {
     this.data = this.callLatestData();
   }
 
-  openTab(isJustMe: boolean) {
+  openTab(isJustMe: boolean, addedParties: Friend[]) {
     if (!this.hasData) this.intialiseData();
 
     this.data = this.callLatestData();
@@ -27,6 +27,7 @@ export class DataService {
     this.data?.tabs.push({
       id: this.idGeneratorService.generateRandomID(),
       isJustMe: isJustMe,
+      addedParties: addedParties
     });
     this.writeData(this.data!);
   }

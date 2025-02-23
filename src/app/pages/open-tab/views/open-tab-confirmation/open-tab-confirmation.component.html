@@ -1,6 +1,16 @@
-<div class="container" *ngIf="isJustMe">
-  <div class="sub-header">Please confirm that the tab you are about to open will
-    be settle by yourself</div>
+<div class="container">
+  <div class="content" *ngIf="isJustMe">
+    <div class="sub-header">Please confirm that the tab you are about to open will
+      be settle by yourself</div>
+  </div>
+  <div class="content" *ngIf="!isJustMe && addedParties">
+    <div class="sub-header">Please confirm that the tab you are about to open will
+      be settle by the follow people</div>
+    <div *ngIf="addedParties.length > 0" class="list-container">
+      <div *ngFor="let party of addedParties">{{party.firstName}} {{party.lastName}}</div>
+    </div>
+  </div>
+
   <app-button 
     class="button" 
     *ngFor="let config of options"

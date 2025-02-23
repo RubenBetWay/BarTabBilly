@@ -11,7 +11,8 @@ import { Friend } from 'src/app/shared/services/data/data.model';
   styleUrls: ['./add-tab-parties.component.scss'],
 })
 export class AddTabPartiesComponent {
-  @Output() onAnswer: EventEmitter<string> = new EventEmitter();
+  @Output() onNoFriendsAnswer: EventEmitter<string> = new EventEmitter();
+  @Output() onListSubmitted: EventEmitter<Friend[]> = new EventEmitter();
 
   hasFriends = false;
   noFriendsOptions: ButtonConfig[] = [AddFriendsButton, JustMeButton];

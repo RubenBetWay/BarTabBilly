@@ -5,7 +5,7 @@
     class="button" 
     *ngFor="let config of noFriendsOptions"
     [config]="config" 
-    (onClick)="onAnswer.emit(config.name)">
+    (onClick)="onNoFriendsAnswer.emit(config.name)">
   </app-button>
 </div>
 
@@ -36,10 +36,12 @@
   <app-button 
     *ngIf="selectedFriends.length > 0"
     class="button" 
-    [config]="doneButton">
+    [config]="doneButton"
+    (onClick)="onListSubmitted.emit(selectedFriends)">
   </app-button>
   <app-button 
     class="button" 
-    [config]="justMeWideButton">
+    [config]="justMeWideButton"
+    (onClick)="onNoFriendsAnswer.emit(justMeWideButton.name)">
   </app-button>
 </div>

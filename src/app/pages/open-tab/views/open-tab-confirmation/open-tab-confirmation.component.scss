@@ -5,17 +5,34 @@
   flex-direction: column;
   align-items: center;
 
-  .sub-header {
+  .content {
     display: flex;
+    flex-direction: column;
+    width: 100%;
     justify-content: center;
     align-items: center;
-    font-size:large;
-    height: 50px;
-    min-height: 50px;
-    width: 80%;
-    text-align: center;
+
+    .sub-header {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: large;
+      height: 50px;
+      min-height: 50px;
+      width: 80%;
+      text-align: center;
+    }
+
+    .list-container {
+      display: flex;
+      flex-direction: column;
+      width: 80%;
+      align-items: center;
+      padding: 32px 0;
+      font-weight: bold;
+    }
   }
-  
+
   .button {
     display: flex;
     width: 100%;
