@@ -1,32 +1,45 @@
-.items-table {
+.container {
   display: flex;
   flex-direction: column;
   width: 100%;
 
-  &-row{
+  .items-table {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     width: 100%;
-    justify-content: space-between;
 
-    .item-column {
-      width: 200%;
-      text-align: start;
-    }
-
-    .number-column {
+    &-row {
+      display: flex;
+      flex-direction: row;
       width: 100%;
-      text-align: center;
+      justify-content: space-between;
+
+      .item-column {
+        width: 200%;
+        text-align: start;
+      }
+
+      .input-column,
+      .percentage-column {
+        width: 100%;
+        text-align: center;
+
+        .input {
+          width: 32px;
+          text-align: center;
+        }
+      }
+
+      .number-column {
+        width: 100%;
+        text-align: end;
+      }
     }
 
-    .price-column {
-      width: 100%;
-      text-align: end;
+    .total-row {
+      margin-top: 8px;
+      border-top: 1px solid black;
+      border-bottom: 1px solid black;
     }
-  }
-
-  .total-row {
-    border-top: 1px solid black;
-    border-bottom: 1px solid black;
   }
 }

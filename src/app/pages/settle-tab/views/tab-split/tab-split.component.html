@@ -1,21 +1,22 @@
-<table class="items-table">
-  <tr class="items-table-row">
-    <th class="item-column">Party</th>
-    <th class="number-column">Factor</th>
-    <th class="price-column">%</th>
-    <th class="price-column">Total</th>
-  </tr>
-  <tr class="items-table-row" *ngFor="let party of parties">
-    <td class="item-column">{{party.firstName}} {{party.lastName}}</td>
-    <td class="number-column">1</td>
-    <td class="price-column">1</td>
-    <td class="price-column">{{100 | number: '1.2-2'}}
-    </td>
-  </tr>
-  <tr class="items-table-row total-row">
-    <th class="item-column">Total</th>
-    <th class="number-column"></th>
-    <th class="price-column"></th>
-    <th class="price-column">{{tabTotal | number: '1.2-2'}}</th>
-  </tr>
-</table>
+<form class="container" [formGroup]="form">
+  <table class="items-table">
+    <tr class="items-table-row">
+      <th class="item-column">Party</th>
+      <th class="input-column">Factor</th>
+      <th class="percentage-column">%</th>
+      <th class="number-column">Total</th>
+    </tr>
+    <tr class="items-table-row" *ngFor="let control of form.controls | keyvalue; let i = index">
+      <td class="item-column">{{ partyMap.get(control.key)?.firstName }} {{partyMap.get(control.key)?.lastName}}</td>
+      <td class="input-column"><input class="input" [formControlName]="control.key" type="number" (keyup)="onFactorChange()"></td>
+      <td class="percentage-column">{{+control.value.value / totalFactor | percent : '0.2'}}</td>
+      <td class="number-column">R{{+control.value.value / totalFactor * tabTotal | number: '1.2-2'}}</td>
+    </tr>
+    <tr class="items-table-row total-row">
+      <th class="item-column">Total</th>
+      <th class="input-column">{{totalFactor}}</th>
+      <th class="percentage-column"></th>
+      <th class="number-column">R{{tabTotal | number: '1.2-2'}}</th>
+    </tr>
+  </table>
+</form>
