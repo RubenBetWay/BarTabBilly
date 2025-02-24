@@ -1,5 +1,8 @@
-<div class="container">
+<div class="container" [ngSwitch]="currentViewState">
   <div class="header">Settle Tab</div>
-  <div class="sub-header">Please select the tab you would like to settle</div>
-  <div *ngFor="let tab of openTabs">{{tab.id}}</div>
+  <app-select-tab
+    *ngSwitchCase="viewState.SelectTab"
+    (tabSelected)="onTabSelected($event)">
+  </app-select-tab>
+  <div *ngSwitchCase="viewState.TabSummary">Tab</div>
 </div>

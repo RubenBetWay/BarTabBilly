@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { TabData } from 'src/app/shared/services/data/data.model';
 import { DataService } from 'src/app/shared/services/data/data.service';
+import { OrderViewState } from './settle-tab.const';
 
 @Component({
   selector: 'app-settle-tab',
@@ -8,17 +9,14 @@ import { DataService } from 'src/app/shared/services/data/data.service';
   styleUrls: ['./settle-tab.component.scss'],
 })
 export class SettleTabPage {
-  openTabs: TabData[] = [];
+  viewState = OrderViewState;
+  currentViewState = OrderViewState.SelectTab
+  selectedTabID: string | undefined
 
-  constructor(private dataService: DataService) {
-    // Should not be able to access this page if
-    // there are no unsettled tabs - so we are
-    // just going to place guards in place
-    if (!dataService.data) return;
-    if (!dataService.data.tabs) return;
-    this.openTabs = dataService.data.tabs.filter(
-      (tab: TabData) => !tab.isSettled
-    );
-    console.log(this.openTabs)
-  }
+
+    onTabSelected(tabID: string){
+      this.selectedTabID = tabID
+      this.currentViewState = OrderViewState.TabSummary
+    }
+  
 }

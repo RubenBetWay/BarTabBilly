@@ -1,6 +1,9 @@
 <div class="main-container" [ngSwitch]="currentViewState"> 
+  <div class="header">Order Round</div>
+
   <app-select-tab
     *ngSwitchCase="viewState.SelectTab"
+    class="view-container"
     (tabSelected)="onTabSelected($event)">
   </app-select-tab>
 

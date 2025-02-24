@@ -1,5 +1,5 @@
 <div *ngIf="orderItems" class="container">
-  <div class="header">{{orderConfirmed ? 'Order Confirmed':'Confirm Order'}}</div>
+  <!-- <div class="sub-header">{{orderConfirmed ? 'Order Confirmed':'Confirm Order'}}</div> -->
   <app-order-summary-table 
     *ngIf="!orderConfirmed"
     class="order-summary-table"
