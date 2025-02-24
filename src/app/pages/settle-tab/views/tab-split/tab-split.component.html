@@ -1,6 +1,6 @@
 <form class="container" [formGroup]="form">
   <table class="items-table">
-    <tr class="items-table-row">
+    <tr class="items-table-row header-row">
       <th class="item-column">Party</th>
       <th class="input-column">Factor</th>
       <th class="percentage-column">%</th>
@@ -19,4 +19,13 @@
       <th class="number-column">R{{tabTotal | number: '1.2-2'}}</th>
     </tr>
   </table>
+  <div *ngIf="form.valid" class="buttons-container">
+    <app-button 
+      class="action-button"
+      *ngFor="let config of actionButtons" 
+      [config]="config"
+      (onClick)="onActonButtonClicked.emit(config.name)">
+    </app-button>
+  </div>
+
 </form>

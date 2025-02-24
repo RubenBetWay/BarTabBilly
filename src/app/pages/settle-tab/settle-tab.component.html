@@ -14,7 +14,8 @@
   <app-tab-split
     class="view-state"
     *ngSwitchCase="viewState.TabSplit"
-    [tab]="tab">
+    [tab]="tab"
+    (onActonButtonClicked)="onTabSplitActionButtonClicked($event)">
   </app-tab-split>
   <app-settlement-confirmed
     *ngSwitchCase="viewState.Confirmed">

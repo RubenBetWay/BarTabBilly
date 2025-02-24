@@ -1,10 +1,11 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { FormArray, FormControl, FormGroup } from '@angular/forms';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import {
   Friend,
   OrderData,
   TabData,
 } from 'src/app/shared/services/data/data.model';
+import { TabSplitActionButtons } from './teb-split.const';
 
 @Component({
   selector: 'app-tab-split',
@@ -13,7 +14,8 @@ import {
 })
 export class TabSplitComponent implements OnInit {
   @Input() tab: TabData | undefined;
-
+  @Output() onActonButtonClicked: EventEmitter<string> = new EventEmitter();
+  
   parties: Friend[] = [
     {
       id: '',
@@ -27,6 +29,7 @@ export class TabSplitComponent implements OnInit {
   form: FormGroup = new FormGroup({});
   tabTotal = 0;
   totalFactor = 0
+  actionButtons = TabSplitActionButtons
 
   ngOnInit() {
     if (!this.tab) return;
@@ -51,7 +54,7 @@ export class TabSplitComponent implements OnInit {
 
   private setForm() {
     this.parties.forEach((party: Friend) => {
-      this.form.addControl(party.id, new FormControl(1))
+      this.form.addControl(party.id, new FormControl(1, Validators.required))
       this.partyMap.set(party.id, party)
     }
     );

@@ -4,6 +4,7 @@ import { DataService } from 'src/app/shared/services/data/data.service';
 import { OrderViewState } from './settle-tab.const';
 import { SelectTabUse } from 'src/app/shared/views/select-tab/select-tab.const';
 import { SettleTabSummaryOption } from './views/tab-summary/tab-summary.const';
+import { TabSplitActionButton } from './views/tab-split/teb-split.const';
 
 @Component({
   selector: 'app-settle-tab',
@@ -29,15 +30,27 @@ export class SettleTabPage {
     switch (buttonName as SettleTabSummaryOption) {
       case SettleTabSummaryOption.Proceed: {
         if (this.tab?.isJustMe) {
-          this.dataService.settleTab(this.tab.id)
-          this.currentViewState = OrderViewState.Confirmed
-        }
-        else 
-          this.currentViewState = OrderViewState.TabSplit
-
+          this.dataService.settleTab(this.tab.id);
+          this.currentViewState = OrderViewState.Confirmed;
+        } else this.currentViewState = OrderViewState.TabSplit;
         break;
       }
       case SettleTabSummaryOption.Cancel: {
+        this.currentViewState = OrderViewState.SelectTab;
+        break;
+      }
+    }
+  }
+
+  onTabSplitActionButtonClicked(buttonName: string) {
+    switch (buttonName as TabSplitActionButton) {
+      case TabSplitActionButton.Proceed: {
+        if (!this.tab) return;
+        this.dataService.settleTab(this.tab.id);
+        this.currentViewState = OrderViewState.Confirmed;
+        break;
+      }
+      case TabSplitActionButton.Cancel: {
         this.currentViewState = OrderViewState.SelectTab;
         break;
       }

@@ -36,10 +36,29 @@
       }
     }
 
+    .header-row {
+      margin-bottom: 8px;
+
+    }
     .total-row {
       margin-top: 8px;
       border-top: 1px solid black;
       border-bottom: 1px solid black;
     }
+  }
+}
+
+.buttons-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 16px 0 ;
+
+  .action-button {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
   }
 }
