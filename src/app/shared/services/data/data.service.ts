@@ -1,8 +1,11 @@
 import { Injectable } from '@angular/core';
 import { AppData, Friend, InitialData, OrderData, TabData } from './data.model';
-import { IdGeneratorService } from '../id-generator/id-generator.service';
+import { IdGeneratorService } from './helpers/id-generator.service';
 import { PersonalDetails } from '../../views/personal-details-form/personal-details-form.model';
 import { OrderItem } from '../../views/order-summary/order-summary.model';
+import { FriendsService } from './helpers/friends.service';
+import { TabService } from './helpers/tab.service';
+import { OrderService } from './helpers/order.service';
 
 @Injectable({
   providedIn: 'root',
@@ -10,102 +13,60 @@ import { OrderItem } from '../../views/order-summary/order-summary.model';
 export class DataService {
   data: AppData | undefined;
 
-  get hasData() {
-    return localStorage.getItem('bar-tab-billy') !== null;
-  }
-
-  constructor(private idGeneratorService: IdGeneratorService) {
-    if (!this.hasData) this.intialiseData();
-
+  constructor(
+    private friendService: FriendsService,
+    private orderService: OrderService,
+    private tabService: TabService
+  ) {
+    if (localStorage.getItem('bar-tab-billy') === null) this.intialiseData();
     this.data = this.callLatestData();
-  }
-
-  openTab(isJustMe: boolean, addedParties: Friend[]) {
-    if (!this.hasData) this.intialiseData();
-
-    this.data = this.callLatestData();
-
-    if (!this.data) return;
-    this.data.tabs.push({
-      id: this.idGeneratorService.generateRandomID(),
-      isJustMe: isJustMe,
-      addedParties: addedParties,
-      isSettled: false,
-      openTimeStamp: new Date(),
-      orders: [],
-      itemsOrderedSummary: []
-    });
-
-    this.writeData(this.data);
   }
 
   addFriend(personalDetails: PersonalDetails) {
-    if (!this.hasData) this.intialiseData();
-
     this.data = this.callLatestData();
-
-    const friend: Friend = Object.assign(
-      {},
-      { id: this.idGeneratorService.generateRandomID() },
+    const upDatedData = this.friendService.addFriend(
+      this.data,
       personalDetails
     );
+    if (upDatedData) this.writeData(upDatedData);
+  }
 
-    if (!this.data) return;
-    if (!this.data.friends) this.data.friends = [friend];
-    else this.data?.friends.push(friend);
+  openTab(isJustMe: boolean, addedParties: Friend[]) {
+    this.data = this.callLatestData();
+    const upDatedData = this.tabService.openTab(
+      this.data,
+      isJustMe, 
+      addedParties
+    );
+    if (upDatedData) this.writeData(upDatedData);
+  }
 
-    this.writeData(this.data);
+  getTabByID(tabID: string): TabData | undefined {
+    this.data = this.callLatestData();
+    return this.tabService.getTabByID(this.data, tabID)
   }
 
   placeOrder(tabID: string, orderItems: OrderItem[]) {
-    if (!this.hasData) this.intialiseData();
-
     this.data = this.callLatestData();
-
-    if (!this.data) return;
-    let tab = this.data.tabs.find((tab: TabData) => tab.id === tabID);
-
-    if (!tab) return;
-    let totalValue = 0;
-    orderItems.forEach(
-      (orderItem: OrderItem) => (totalValue += orderItem.qty * orderItem.price)
+    const upDatedData = this.orderService.placeOrder(
+      this.data,
+      tabID, 
+      orderItems
     );
-    const order: OrderData = {
-      id: this.idGeneratorService.generateRandomID(),
-      orderTimeStamp: new Date(),
-      orderItems: orderItems,
-      totalValue: totalValue,
-    };
-    if (tab.orders) tab.orders.push(order);
-    else tab.orders = [order];
-
-    this.writeData(this.data);
+    if (upDatedData) this.writeData(upDatedData);
   }
 
-  getTabByID(tabID: string): TabData | undefined{
+  settleTab(tabID: string) {
     this.data = this.callLatestData();
-
-    if (!this.data) return;
-    const tab = this.data.tabs.find((tab: TabData) => tab.id === tabID);
-
-    return tab
+    const upDatedData = this.tabService.settleTab(
+      this.data,
+      tabID, 
+    );
+    if (upDatedData) this.writeData(upDatedData);
   }
 
-  settleTab(tabID: string){
-    this.data = this.callLatestData();
-
-    if (!this.data) return;
-    let tab = this.data.tabs.find((tab: TabData) => tab.id === tabID);
-
-    if (!tab) return;
-    tab.isSettled = true
-    tab.settledTimeStamp = new Date()
-
-    this.writeData(this.data);
-  }
-
-  private callLatestData() {
-    if (!this.hasData) return;
+  private callLatestData(): AppData {
+    if (localStorage.getItem('bar-tab-billy') === null) this.intialiseData();
     return JSON.parse(localStorage.getItem('bar-tab-billy')!);
   }
 

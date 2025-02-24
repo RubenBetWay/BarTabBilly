@@ -23,7 +23,7 @@ export class AddTabPartiesComponent {
   justMeWideButton = JustMeWideButton
 
   constructor(private dataService: DataService) {
-    if (!dataService.hasData) return; // hasFriends remains false
+    if (!dataService.data) return; // hasFriends remains false
 
     // At this point we have confirmed this - but lets keep it tight
     if (this.dataService.data) {
