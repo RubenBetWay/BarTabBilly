@@ -27,6 +27,8 @@ export class ReceiptGenerationComponent {
         break;
       }
       case ReceiptTypeSelection.PDF: {
+        if (!this.tab) return
+        this.receiptService.generatePDFReceipt(this.tab)
         break;
       }
     }

@@ -2,7 +2,6 @@ import { Component, EventEmitter, Output } from '@angular/core';
 import { DataService } from 'src/app/shared/services/data/data.service';
 import { AddFriendsButton, DoneButton, JustMeButton, JustMeWideButton } from './add-tab-parties.const';
 import { ButtonConfig } from 'src/app/shared/components/button/button.model';
-import { PersonalDetails } from 'src/app/shared/views/personal-details-form/personal-details-form.model';
 import { Friend } from 'src/app/shared/services/data/data.model';
 
 @Component({

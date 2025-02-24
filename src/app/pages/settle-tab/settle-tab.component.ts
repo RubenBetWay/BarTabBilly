@@ -32,6 +32,7 @@ export class SettleTabPage {
       case SettleTabSummaryOption.Proceed: {
         if (this.tab?.isJustMe) {
           this.dataService.settleTab(this.tab.id);
+          this.tab = this.dataService.getTabByID(this.tab.id)
           this.currentViewState = OrderViewState.Confirmed;
         } else this.currentViewState = OrderViewState.TabSplit;
         break;
