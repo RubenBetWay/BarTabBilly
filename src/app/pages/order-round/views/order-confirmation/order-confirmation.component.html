@@ -1,0 +1,27 @@
+<div *ngIf="orderItems" class="container">
+  <div class="header">{{orderConfirmed ? 'Order Confirmed':'Confirm Order'}}</div>
+  <app-order-summary-table 
+    *ngIf="!orderConfirmed"
+    class="order-summary-table"
+    [orderItems]="orderItems">
+  </app-order-summary-table>
+  <div *ngIf="!orderConfirmed" class="buttons-container">
+    <app-button 
+      class="confirmation-button"
+      *ngFor="let config of confirmationButtons" 
+      [config]="config"
+      (onClick)="onConfirmationButtonClick(config.name)">
+    </app-button>
+  </div>
+  <div class="confirmation-message" *ngIf="orderConfirmed">
+    <div >
+      Great stuff - your order is placed and your drinks are 
+      on their way. <br>Happy Drinking!!!
+    </div>
+    <app-button 
+      class="confirmation-button"
+      [config]="confirmedButton"
+      (onClick)="onConfirmationButtonClick(confirmedButton.name)">
+    </app-button>
+  </div>
+</div>

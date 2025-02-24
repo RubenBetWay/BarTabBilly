@@ -1,0 +1,21 @@
+<div *ngIf="stockItemCardConfigs" class="container">
+  <div class="header">Order Round</div>
+  <app-stock-item-card
+    class="card" 
+    *ngFor="let config of stockItemCardConfigs"
+    [config]="config"
+    (addToOrder)="onOrderInstruction($event)">
+  </app-stock-item-card>
+  <div [ngStyle]="extraSpaceStyling"></div>
+</div>
+
+<!-- Bottom Sheet Component -->
+<app-bottom-sheet
+  #bottomSheet
+  class="bottom-sheet"
+  [isOpen]="showBottomSheet">
+  <app-order-summary
+    #orderSummary
+    (orderPlaced)="onOrderPlaced.emit(orderItems)">
+  </app-order-summary>
+</app-bottom-sheet>
