@@ -4,6 +4,7 @@ export enum OrderViewState {
   SelectTab,
   ProductMenu,
   OrderConfirmation,
+  OrderConfirmed
 }
 
 export const ProductMenu: StockItemCardConfig[] = [

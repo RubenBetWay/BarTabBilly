@@ -39,7 +39,8 @@ export class OrderRoundPage {
   }
 
   onConfirmation(){
-    if (this.selectedTabID && this.orderItems)
+    if (!this.selectedTabID || !this.orderItems) return
     this.dataService.placeOrder(this.selectedTabID, this.orderItems)
+    this.currentViewState = OrderViewState.OrderConfirmed
   }
 }

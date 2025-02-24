@@ -26,6 +26,7 @@ import { OrderConfirmationComponent } from './pages/order-round/views/order-conf
 import { SelectTabComponent } from './shared/views/select-tab/select-tab.component';
 import { TabCardComponent } from './shared/components/tab-card/tab-card.component';
 import { TabSummaryComponent } from './pages/settle-tab/views/tab-summary/tab-summary.component';
+import { OrderConfirmedComponent } from './pages/order-round/views/order-confirmed/order-confirmed.component';
 
 @NgModule({
   declarations: [
@@ -58,6 +59,7 @@ import { TabSummaryComponent } from './pages/settle-tab/views/tab-summary/tab-su
     SelectTabComponent,
     TabCardComponent,
     TabSummaryComponent,
+    OrderConfirmedComponent,
   ],
   imports: [
     BrowserModule,

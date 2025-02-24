@@ -21,9 +21,3 @@ export const ConfirmationButtons: ButtonConfig[] = [
   },
 ];
 
-export const ConfirmedButton: ButtonConfig = {
-  name: ConfirmationButton.Home,
-  text: 'Cool',
-  size: ButtonSize.Wide,
-  color: 'aquamarine',
-};

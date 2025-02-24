@@ -22,6 +22,11 @@
     (onConfirmation)="onConfirmation()"
     (onConfirmationCancelled)="onConfirmationCancelled()">
   </app-order-confirmation>
+
+  <app-order-confirmed
+    *ngSwitchCase="viewState.OrderConfirmed"
+    class="view-container">
+  </app-order-confirmed>
 </div>
 
 

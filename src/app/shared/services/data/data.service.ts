@@ -62,7 +62,7 @@ export class DataService {
     this.data = this.callLatestData();
 
     if (!this.data) return;
-    let tab = this.data.tabs.find((tab: TabData) => (tab.id = tabID));
+    let tab = this.data.tabs.find((tab: TabData) => tab.id === tabID);
 
     if (!tab) return;
     let totalValue = 0;
