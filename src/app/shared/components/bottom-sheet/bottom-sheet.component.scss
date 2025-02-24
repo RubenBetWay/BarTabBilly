@@ -2,6 +2,7 @@
 .outer-container {
   position: fixed;
   inset-block-end: 0;
+  padding-bottom: env(safe-area-inset-bottom);
   left: 0;
   width: 100vw;
   z-index: 5;
