@@ -1,5 +1,11 @@
-.view-container {
+.main-container {
   display: flex;
   width: 100%;
   height: 100%;
- }
+  
+  .view-container {
+    display: flex;
+    width: 100%;
+    height: 100%;
+   }
+}

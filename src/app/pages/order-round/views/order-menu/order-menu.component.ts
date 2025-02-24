@@ -22,7 +22,7 @@ import { OrderItem } from 'src/app/shared/views/order-summary/order-summary.mode
   styleUrls: ['./order-menu.component.scss'],
 })
 export class OrderMenuComponent implements OnInit, AfterViewInit {
-  @Input() stockItemCardConfigs: StockItemCardConfig[] | undefined;
+  @Input() productMenu: StockItemCardConfig[] | undefined;
   @Input() orderItems: OrderItem[] = [];
   @Output() onOrderPlaced: EventEmitter<OrderItem[]> = new EventEmitter();
 

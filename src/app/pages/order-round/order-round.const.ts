@@ -1,10 +1,12 @@
-import {
-  ButtonConfig,
-  ButtonSize,
-} from 'src/app/shared/components/button/button.model';
 import { StockItemCardConfig } from 'src/app/shared/components/stock-item-card/stock-item-card.model';
 
-export const StockItemCardConfigs: StockItemCardConfig[] = [
+export enum OrderViewState {
+  SelectTab,
+  ProductMenu,
+  OrderConfirmation,
+}
+
+export const ProductMenu: StockItemCardConfig[] = [
   {
     title: 'Beer',
     price: 45,
@@ -46,30 +48,3 @@ export const StockItemCardConfigs: StockItemCardConfig[] = [
   },
 ];
 
-export enum ConfirmationButton {
-  Proceed = 'proceed',
-  Cancel = 'cancel',
-  Home = 'home',
-}
-
-export const ConfirmationButtons: ButtonConfig[] = [
-  {
-    name: ConfirmationButton.Cancel,
-    text: 'Whoops - Forgot something',
-    size: ButtonSize.Wide,
-    color: 'lightblue',
-  },
-  {
-    name: ConfirmationButton.Proceed,
-    text: 'Looks Good',
-    size: ButtonSize.Wide,
-    color: 'aquamarine',
-  },
-];
-
-export const ConfirmedButton: ButtonConfig = {
-  name: ConfirmationButton.Home,
-  text: 'Cool',
-  size: ButtonSize.Wide,
-  color: 'aquamarine',
-};

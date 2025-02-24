@@ -1,14 +1,23 @@
-<app-order-menu 
-  *ngIf="!isOrderConfirmation" 
-  class="view-container"
-  [stockItemCardConfigs]="stockItemCardConfigs"
-  [orderItems]="orderItems"
-  (onOrderPlaced)="onOrderPlaced($event)">
-</app-order-menu>
+<div class="main-container" [ngSwitch]="currentViewState"> 
+  <app-select-tab
+    *ngSwitchCase="viewState.SelectTab"
+    (tabSelected)="onTabSelected($event)">
+  </app-select-tab>
 
-<app-order-confirmation 
-  *ngIf="isOrderConfirmation"
-  class="view-container"
-  [orderItems]="orderItems"
-  (onConfirmationCancelled)="onConfirmationCancelled()">
-</app-order-confirmation>
+  <app-order-menu 
+    *ngSwitchCase="viewState.ProductMenu"
+    class="view-container"
+    [productMenu]="productMenu"
+    [orderItems]="orderItems"
+    (onOrderPlaced)="onOrderPlaced($event)">
+  </app-order-menu>
+
+  <app-order-confirmation 
+    *ngSwitchCase="viewState.OrderConfirmation"
+    class="view-container"
+    [orderItems]="orderItems"
+    (onConfirmationCancelled)="onConfirmationCancelled()">
+  </app-order-confirmation>
+</div>
+
+

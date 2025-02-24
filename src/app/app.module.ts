@@ -23,6 +23,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { PersonalDetailsFormView } from './shared/views/personal-details-form/personal-details-form.component';
 import { OrderMenuComponent } from './pages/order-round/views/order-menu/order-menu.component';
 import { OrderConfirmationComponent } from './pages/order-round/views/order-confirmation/order-confirmation.component';
+import { SelectTabComponent } from './pages/order-round/views/select-tab/select-tab.component';
+import { TabCardComponent } from './shared/components/tab-card/tab-card.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +54,8 @@ import { OrderConfirmationComponent } from './pages/order-round/views/order-conf
     PersonalDetailsFormView,
     OrderMenuComponent,
     OrderConfirmationComponent,
+    SelectTabComponent,
+    TabCardComponent,
   ],
   imports: [
     BrowserModule,

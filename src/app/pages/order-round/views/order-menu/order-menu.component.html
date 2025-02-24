@@ -1,9 +1,9 @@
-<div *ngIf="stockItemCardConfigs" class="container">
+<div *ngIf="productMenu" class="container">
   <div class="header">Order Round</div>
   <app-stock-item-card
     class="card" 
-    *ngFor="let config of stockItemCardConfigs"
-    [config]="config"
+    *ngFor="let product of productMenu"
+    [config]="product"
     (addToOrder)="onOrderInstruction($event)">
   </app-stock-item-card>
   <div [ngStyle]="extraSpaceStyling"></div>
