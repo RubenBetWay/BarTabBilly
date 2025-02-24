@@ -11,10 +11,4 @@ export class SettlementConfirmedComponent {
   @Output() onActonButtonClicked: EventEmitter<string> = new EventEmitter();
 
   actionButtons = TabSettleConfirmationButtons;
-
-  constructor(private router: Router) {}
-
-  onConfirmationButtonClick() {
-    this.router.navigate(['']);
-  }
 }

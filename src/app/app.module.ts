@@ -29,6 +29,7 @@ import { TabSummaryComponent } from './pages/settle-tab/views/tab-summary/tab-su
 import { OrderConfirmedComponent } from './pages/order-round/views/order-confirmed/order-confirmed.component';
 import { TabSplitComponent } from './pages/settle-tab/views/tab-split/tab-split.component';
 import { SettlementConfirmedComponent } from './pages/settle-tab/views/settlement-confirmed/settlement-confirmed.component';
+import { ReceiptGenerationComponent } from './shared/views/receipt-generation/receipt-generation.component';
 
 @NgModule({
   declarations: [
@@ -64,6 +65,7 @@ import { SettlementConfirmedComponent } from './pages/settle-tab/views/settlemen
     OrderConfirmedComponent,
     TabSplitComponent,
     SettlementConfirmedComponent,
+    ReceiptGenerationComponent,
   ],
   imports: [
     BrowserModule,

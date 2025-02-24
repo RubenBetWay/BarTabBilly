@@ -62,9 +62,7 @@ export class SettleTabPage {
   onConfirmationActionButtonClicked(buttonName: string){
     switch (buttonName as TabSettleConfirmationActionButton) {
       case TabSettleConfirmationActionButton.Accept: {
-        if (!this.tab) return;
-        this.dataService.settleTab(this.tab.id);
-        this.currentViewState = OrderViewState.Confirmed;
+        this.currentViewState = OrderViewState.Receipt;
         break;
       }
       case TabSettleConfirmationActionButton.Reject: {

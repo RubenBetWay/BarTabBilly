@@ -21,4 +21,9 @@
     *ngSwitchCase="viewState.Confirmed"
     (onActonButtonClicked)="onConfirmationActionButtonClicked($event)">
   </app-settlement-confirmed>
+  <app-receipt-generation
+    class="view-state"
+    *ngSwitchCase="viewState.Receipt"
+    [tab]="tab">
+  </app-receipt-generation>
 </div>
