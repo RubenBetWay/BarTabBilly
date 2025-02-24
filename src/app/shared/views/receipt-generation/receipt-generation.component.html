@@ -1,0 +1,9 @@
+<div class="container">
+  <div class="sub-header">In what format would you like your receipt</div>
+  <app-button 
+    class="button" 
+    *ngFor="let config of options"
+    [config]="config"
+    (onClick)="onOptionClicked(config.name)">
+  </app-button>
+</div>
