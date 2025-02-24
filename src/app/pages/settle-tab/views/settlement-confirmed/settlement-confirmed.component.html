@@ -1,12 +1,17 @@
 <div class="container">
   <div class="confirmation-message">
-    <div >
-      Great stuff - your tab is now settle <br><br>Thank you!!!
+    <div>
+      Great stuff - your tab is now settle<br><br>Thank you!!!
     </div>
-    <app-button 
-      class="confirmation-button"
-      [config]="confirmedButton"
-      (onClick)="onConfirmationButtonClick()">
-    </app-button>
+    <div>Would you like a receipt?
+    </div>
+    <div class="buttons-container">
+      <app-button 
+        class="action-button"
+        *ngFor="let config of actionButtons" 
+        [config]="config"
+        (onClick)="onActonButtonClicked.emit(config.name)">
+      </app-button>
+    </div>
   </div>
 </div>

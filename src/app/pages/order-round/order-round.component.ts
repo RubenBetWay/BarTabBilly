@@ -45,8 +45,5 @@ export class OrderRoundPage {
     if (!this.selectedTabID || !this.orderItems) return;
     this.dataService.placeOrder(this.selectedTabID, this.orderItems);
     this.currentViewState = OrderViewState.OrderConfirmed;
-    setTimeout(() => {
-      this.router.navigate(['']);
-    }, 5000);
   }
 }

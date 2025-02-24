@@ -5,6 +5,7 @@ import { OrderViewState } from './settle-tab.const';
 import { SelectTabUse } from 'src/app/shared/views/select-tab/select-tab.const';
 import { SettleTabSummaryOption } from './views/tab-summary/tab-summary.const';
 import { TabSplitActionButton } from './views/tab-split/teb-split.const';
+import { TabSettleConfirmationActionButton } from './views/settlement-confirmed/settlement-confirmed.const';
 
 @Component({
   selector: 'app-settle-tab',
@@ -51,6 +52,22 @@ export class SettleTabPage {
         break;
       }
       case TabSplitActionButton.Cancel: {
+        console.log('here')
+        this.currentViewState = OrderViewState.SelectTab;
+        break;
+      }
+    }
+  }
+
+  onConfirmationActionButtonClicked(buttonName: string){
+    switch (buttonName as TabSettleConfirmationActionButton) {
+      case TabSettleConfirmationActionButton.Accept: {
+        if (!this.tab) return;
+        this.dataService.settleTab(this.tab.id);
+        this.currentViewState = OrderViewState.Confirmed;
+        break;
+      }
+      case TabSettleConfirmationActionButton.Reject: {
         this.currentViewState = OrderViewState.SelectTab;
         break;
       }

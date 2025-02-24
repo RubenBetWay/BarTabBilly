@@ -18,6 +18,7 @@
     (onActonButtonClicked)="onTabSplitActionButtonClicked($event)">
   </app-tab-split>
   <app-settlement-confirmed
-    *ngSwitchCase="viewState.Confirmed">
+    *ngSwitchCase="viewState.Confirmed"
+    (onActonButtonClicked)="onConfirmationActionButtonClicked($event)">
   </app-settlement-confirmed>
 </div>

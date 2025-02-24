@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { ConfirmedButton } from './settlement-confirmed.const';
+import { Component, EventEmitter, Output } from '@angular/core';
+import { TabSettleConfirmationButtons } from './settlement-confirmed.const';
 import { Router } from '@angular/router';
 
 @Component({
@@ -8,7 +8,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./settlement-confirmed.component.scss'],
 })
 export class SettlementConfirmedComponent {
-  confirmedButton = ConfirmedButton;
+  @Output() onActonButtonClicked: EventEmitter<string> = new EventEmitter();
+
+  actionButtons = TabSettleConfirmationButtons;
 
   constructor(private router: Router) {}
 

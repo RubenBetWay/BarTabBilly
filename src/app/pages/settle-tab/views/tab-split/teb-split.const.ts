@@ -2,7 +2,6 @@ import {
   ButtonConfig,
   ButtonSize,
 } from 'src/app/shared/components/button/button.model';
-import { SettleTabSummaryOption } from '../tab-summary/tab-summary.const';
 
 export enum TabSplitActionButton {
   Proceed = 'proceed',
