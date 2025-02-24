@@ -1,1 +1,12 @@
-<p>settlement-confirmed works!</p>
+<div class="container">
+  <div class="confirmation-message">
+    <div >
+      Great stuff - your tab is now settle <br><br>Thank you!!!
+    </div>
+    <app-button 
+      class="confirmation-button"
+      [config]="confirmedButton"
+      (onClick)="onConfirmationButtonClick()">
+    </app-button>
+  </div>
+</div>

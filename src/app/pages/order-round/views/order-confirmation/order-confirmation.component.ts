@@ -18,15 +18,10 @@ export class OrderConfirmationComponent {
 
   confirmationButtons = ConfirmationButtons;
 
-  constructor(private router: Router) {}
-
   onConfirmationButtonClick(buttonName: string) {
     switch (buttonName) {
       case ConfirmationButton.Proceed: {
         this.onConfirmation.emit()
-        // setTimeout(() => {
-        //   this.router.navigate(['']);
-        // }, 5000);
         break;
       }
       case ConfirmationButton.Cancel: {

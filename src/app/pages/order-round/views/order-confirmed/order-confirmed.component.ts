@@ -10,11 +10,9 @@ import { ConfirmedButton } from './order-confirmed.const';
 export class OrderConfirmedComponent {
   confirmedButton = ConfirmedButton
 
-  constructor(private router: Router) {
-    console.log('OrderConfirmedComponent')
-  }
+  constructor(private router: Router) {}
   
-  onConfirmationButtonClick(buttonName: string) {
+  onConfirmationButtonClick() {
     this.router.navigate(['']);
   }
 }

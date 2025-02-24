@@ -5,6 +5,7 @@ import { OrderItem } from 'src/app/shared/views/order-summary/order-summary.mode
 import { OrderSummaryView } from 'src/app/shared/views/order-summary/order-summary.component';
 import { DataService } from 'src/app/shared/services/data/data.service';
 import { SelectTabUse } from 'src/app/shared/views/select-tab/select-tab.const';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-order-round',
@@ -15,34 +16,37 @@ export class OrderRoundPage {
   @ViewChild('bottomSheet') bottomSheet!: BottomSheetComponent;
   @ViewChild('bottomSheet', { read: ElementRef }) bottomSheetRef!: ElementRef;
   @ViewChild('orderSummary') orderSummary!: OrderSummaryView;
-  
-  selectTabUse = SelectTabUse
-  selectedTabID: string | undefined
+
+  selectTabUse = SelectTabUse;
+  selectedTabID: string | undefined;
   viewState = OrderViewState;
-  currentViewState = OrderViewState.SelectTab
+  currentViewState = OrderViewState.SelectTab;
   productMenu = ProductMenu;
   orderItems: OrderItem[] = [];
   isOrderConfirmation = false;
 
-  constructor(private dataService: DataService) {}
-  
-  onTabSelected(tabID: string){
-    this.selectedTabID = tabID
-    this.currentViewState = OrderViewState.ProductMenu
+  constructor(private dataService: DataService, private router: Router) {}
+
+  onTabSelected(tabID: string) {
+    this.selectedTabID = tabID;
+    this.currentViewState = OrderViewState.ProductMenu;
   }
 
   onOrderPlaced(orderItems: OrderItem[]) {
-    this.orderItems = orderItems
-    this.currentViewState = OrderViewState.OrderConfirmation
+    this.orderItems = orderItems;
+    this.currentViewState = OrderViewState.OrderConfirmation;
   }
 
-  onConfirmationCancelled(){
-    this.currentViewState = OrderViewState.ProductMenu
+  onConfirmationCancelled() {
+    this.currentViewState = OrderViewState.ProductMenu;
   }
 
-  onConfirmation(){
-    if (!this.selectedTabID || !this.orderItems) return
-    this.dataService.placeOrder(this.selectedTabID, this.orderItems)
-    this.currentViewState = OrderViewState.OrderConfirmed
+  onConfirmation() {
+    if (!this.selectedTabID || !this.orderItems) return;
+    this.dataService.placeOrder(this.selectedTabID, this.orderItems);
+    this.currentViewState = OrderViewState.OrderConfirmed;
+    setTimeout(() => {
+      this.router.navigate(['']);
+    }, 5000);
   }
 }
