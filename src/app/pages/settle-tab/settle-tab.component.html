@@ -11,4 +11,10 @@
     [tab]="tab"
     (onSummaryResponse)="onSummaryResponse($event)">
   </app-tab-summary>
+  <app-tab-split
+  *ngSwitchCase="viewState.TabSplit">
+</app-tab-split>
+  <app-settlement-confirmed
+    *ngSwitchCase="viewState.Confirmed">
+  </app-settlement-confirmed>
 </div>

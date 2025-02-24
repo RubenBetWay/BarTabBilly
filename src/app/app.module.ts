@@ -27,6 +27,8 @@ import { SelectTabComponent } from './shared/views/select-tab/select-tab.compone
 import { TabCardComponent } from './shared/components/tab-card/tab-card.component';
 import { TabSummaryComponent } from './pages/settle-tab/views/tab-summary/tab-summary.component';
 import { OrderConfirmedComponent } from './pages/order-round/views/order-confirmed/order-confirmed.component';
+import { TabSplitComponent } from './pages/settle-tab/views/tab-split/tab-split.component';
+import { SettlementConfirmedComponent } from './pages/settle-tab/views/settlement-confirmed/settlement-confirmed.component';
 
 @NgModule({
   declarations: [
@@ -60,6 +62,8 @@ import { OrderConfirmedComponent } from './pages/order-round/views/order-confirm
     TabCardComponent,
     TabSummaryComponent,
     OrderConfirmedComponent,
+    TabSplitComponent,
+    SettlementConfirmedComponent,
   ],
   imports: [
     BrowserModule,
