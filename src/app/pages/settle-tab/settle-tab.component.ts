@@ -28,9 +28,13 @@ export class SettleTabPage {
   onSummaryResponse(buttonName: string) {
     switch (buttonName as SettleTabSummaryOption) {
       case SettleTabSummaryOption.Proceed: {
-        this.currentViewState = this.tab?.isJustMe
-          ? OrderViewState.Confirmed
-          : OrderViewState.TabSplit
+        if (this.tab?.isJustMe) {
+          this.dataService.settleTab(this.tab.id)
+          this.currentViewState = OrderViewState.Confirmed
+        }
+        else 
+          this.currentViewState = OrderViewState.TabSplit
+
         break;
       }
       case SettleTabSummaryOption.Cancel: {

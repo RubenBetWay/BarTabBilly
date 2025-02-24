@@ -90,6 +90,18 @@ export class DataService {
     return tab
   }
 
+  settleTab(tabID: string){
+    this.data = this.callLatestData();
+
+    if (!this.data) return;
+    let tab = this.data.tabs.find((tab: TabData) => tab.id === tabID);
+
+    if (!tab) return;
+    tab.isSettled = true
+
+    this.writeData(this.data);
+  }
+
   private callLatestData() {
     if (!this.hasData) return;
     return JSON.parse(localStorage.getItem('bar-tab-billy')!);
