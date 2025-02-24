@@ -4,5 +4,8 @@
     *ngSwitchCase="viewState.SelectTab"
     (tabSelected)="onTabSelected($event)">
   </app-select-tab>
-  <div *ngSwitchCase="viewState.TabSummary">Tab</div>
+  <app-tab-summary 
+    *ngSwitchCase="viewState.TabSummary"
+    [tab]="tab">
+  </app-tab-summary>
 </div>

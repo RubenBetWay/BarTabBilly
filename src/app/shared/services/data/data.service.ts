@@ -81,6 +81,15 @@ export class DataService {
     this.writeData(this.data);
   }
 
+  getTabByID(tabID: string): TabData | undefined{
+    this.data = this.callLatestData();
+
+    if (!this.data) return;
+    const tab = this.data.tabs.find((tab: TabData) => tab.id === tabID);
+
+    return tab
+  }
+
   private callLatestData() {
     if (!this.hasData) return;
     return JSON.parse(localStorage.getItem('bar-tab-billy')!);

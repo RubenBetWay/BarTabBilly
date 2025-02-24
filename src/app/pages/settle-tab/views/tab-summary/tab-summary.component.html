@@ -1,1 +1,41 @@
-<p>tab-summary works!</p>
+<div *ngIf="tab" class="container">
+  <div class="sub-header">Below is a summary of the orders under this tab</div>
+
+  <div class="summary-line">
+    <div class="label">Tab ID:</div>
+    <div>{{tab.id}}</div>
+  </div>
+
+  <div class="summary-line">
+    <div class="label">Tab opened:</div>
+    <div>{{ tab.openTimeStamp | date}} {{ tab.openTimeStamp | date:'shortTime'
+      }}</div>
+  </div>
+
+  <div *ngIf="tab.isJustMe" class="summary-line">
+    <div class="label">Tab parties:</div>
+    <div>Just me</div>
+  </div>
+
+  <div *ngIf="!tab.isJustMe && tab.addedParties" class="summary-section">
+    <div class="label">Tab parties:</div>
+    <div class="summary-line" *ngFor="let party of tab.addedParties">
+      - {{party.firstName}} {{party.lastName}}
+    </div>
+  </div>
+
+
+  <div class="order-section">
+    <div class="title">Orders</div>
+    <div class="orders" *ngFor="let order of tab.orders">
+      <div class="summary-line">
+        <div class="label">Order ID:</div>
+        <div>{{order.id}}</div>
+      </div>
+      <app-order-summary-table class="order-summary-table"
+        [orderItems]="order.orderItems">
+      </app-order-summary-table>
+    </div>
+
+  </div>
+</div>

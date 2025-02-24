@@ -10,13 +10,15 @@ import { OrderViewState } from './settle-tab.const';
 })
 export class SettleTabPage {
   viewState = OrderViewState;
-  currentViewState = OrderViewState.SelectTab
-  selectedTabID: string | undefined
+  currentViewState = OrderViewState.SelectTab;
+  selectedTabID: string | undefined;
+  tab: TabData | undefined
 
+  constructor(private dataService: DataService){}
 
-    onTabSelected(tabID: string){
-      this.selectedTabID = tabID
-      this.currentViewState = OrderViewState.TabSummary
-    }
-  
+  onTabSelected(tabID: string) {
+    this.tab = this.dataService.getTabByID(tabID)
+    if (!this.tab) return
+    this.currentViewState = OrderViewState.TabSummary;
+  }
 }

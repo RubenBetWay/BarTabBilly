@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { TabData } from 'src/app/shared/services/data/data.model';
 
 @Component({
   selector: 'app-tab-summary',
@@ -6,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./tab-summary.component.scss']
 })
 export class TabSummaryComponent {
-
+@Input() tab: TabData | undefined
 }
