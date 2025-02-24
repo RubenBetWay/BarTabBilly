@@ -1,0 +1,5 @@
+<div class="card" *ngIf="tab" (click)="tabSelected.emit(tab.id)">
+  <div>Tab ID: {{tab.id}}</div>
+  <div class="sub-header">Added Parties:</div>
+  <div *ngFor="let party of tab.addedParties"> - {{party.firstName}} {{party.lastName}}</div>
+</div>
