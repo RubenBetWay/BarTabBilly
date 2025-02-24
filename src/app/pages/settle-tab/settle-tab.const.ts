@@ -1,4 +1,4 @@
-export enum OrderViewState {
+export enum SettleViewState {
   SelectTab,
   TabSummary,
   TabSplit,

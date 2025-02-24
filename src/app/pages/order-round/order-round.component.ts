@@ -5,7 +5,7 @@ import { OrderItem } from 'src/app/shared/views/order-summary/order-summary.mode
 import { OrderSummaryView } from 'src/app/shared/views/order-summary/order-summary.component';
 import { DataService } from 'src/app/shared/services/data/data.service';
 import { SelectTabUse } from 'src/app/shared/views/select-tab/select-tab.const';
-import { Router } from '@angular/router';
+import { ViewportScroller } from '@angular/common';
 
 @Component({
   selector: 'app-order-round',
@@ -25,25 +25,34 @@ export class OrderRoundPage {
   orderItems: OrderItem[] = [];
   isOrderConfirmation = false;
 
-  constructor(private dataService: DataService, private router: Router) {}
+  constructor(
+    private dataService: DataService,
+    private viewportScroller: ViewportScroller
+  ) {}
 
   onTabSelected(tabID: string) {
     this.selectedTabID = tabID;
-    this.currentViewState = OrderViewState.ProductMenu;
+    this.changeView(OrderViewState.ProductMenu)
   }
 
   onOrderPlaced(orderItems: OrderItem[]) {
     this.orderItems = orderItems;
-    this.currentViewState = OrderViewState.OrderConfirmation;
+    this.changeView(OrderViewState.OrderConfirmation)
+
   }
 
   onConfirmationCancelled() {
-    this.currentViewState = OrderViewState.ProductMenu;
+    this.changeView(OrderViewState.ProductMenu)
   }
 
   onConfirmation() {
     if (!this.selectedTabID || !this.orderItems) return;
     this.dataService.placeOrder(this.selectedTabID, this.orderItems);
-    this.currentViewState = OrderViewState.OrderConfirmed;
+    this.changeView(OrderViewState.OrderConfirmed)
+  }
+
+  private changeView(view: OrderViewState) {
+    this.currentViewState = view;
+    this.viewportScroller.scrollToPosition([0, 0]);
   }
 }
