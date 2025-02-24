@@ -1,9 +1,10 @@
 /* Bottom Sheet Styles */
 .outer-container {
   position: fixed;
-  bottom: 0;
+  inset-block-end: 0;
   left: 0;
   width: 100vw;
+  z-index: 5;
   min-height: fit-content;
   height: fit-content;
   background: aqua;
