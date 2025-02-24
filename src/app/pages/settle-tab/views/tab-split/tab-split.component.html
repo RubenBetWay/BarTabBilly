@@ -1,1 +1,21 @@
-<p>tab-split works!</p>
+<table class="items-table">
+  <tr class="items-table-row">
+    <th class="item-column">Party</th>
+    <th class="number-column">Factor</th>
+    <th class="price-column">%</th>
+    <th class="price-column">Total</th>
+  </tr>
+  <tr class="items-table-row" *ngFor="let party of parties">
+    <td class="item-column">{{party.firstName}} {{party.lastName}}</td>
+    <td class="number-column">1</td>
+    <td class="price-column">1</td>
+    <td class="price-column">{{100 | number: '1.2-2'}}
+    </td>
+  </tr>
+  <tr class="items-table-row total-row">
+    <th class="item-column">Total</th>
+    <th class="number-column"></th>
+    <th class="price-column"></th>
+    <th class="price-column">{{tabTotal | number: '1.2-2'}}</th>
+  </tr>
+</table>

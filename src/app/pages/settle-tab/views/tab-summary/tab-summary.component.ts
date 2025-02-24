@@ -11,7 +11,6 @@ export class TabSummaryComponent implements OnInit {
   @Input() tab: TabData | undefined;
   @Output() onSummaryResponse: EventEmitter<string> = new EventEmitter();
   
-
   tabTotal = 0;
   actionButtons = SettleTabSummaryButtons;
 
