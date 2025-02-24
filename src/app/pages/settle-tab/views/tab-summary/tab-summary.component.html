@@ -36,6 +36,20 @@
         [orderItems]="order.orderItems">
       </app-order-summary-table>
     </div>
-
   </div>
+
+  <div class="summary-line">
+    <div class="label">Tab total:</div>
+    <div>R {{tabTotal | number: '1.2-2'}}</div>
+  </div>
+
+  <div class="buttons-container">
+    <app-button 
+      class="action-button"
+      *ngFor="let config of actionButtons" 
+      [config]="config"
+      (onClick)="onSummaryResponse.emit(config.name)">
+    </app-button>
+  </div>
+
 </div>

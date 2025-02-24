@@ -4,6 +4,7 @@
   <app-select-tab
     *ngSwitchCase="viewState.SelectTab"
     class="view-container"
+    [use]="selectTabUse.Order"
     (tabSelected)="onTabSelected($event)">
   </app-select-tab>
 

@@ -1,6 +1,7 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { TabData } from 'src/app/shared/services/data/data.model';
 import { DataService } from 'src/app/shared/services/data/data.service';
+import { SelectTabUse } from './select-tab.const';
 
 @Component({
   selector: 'app-select-tab',
@@ -8,8 +9,10 @@ import { DataService } from 'src/app/shared/services/data/data.service';
   styleUrls: ['./select-tab.component.scss']
 })
 export class SelectTabComponent {
+  @Input() use: SelectTabUse | undefined
   @Output() tabSelected: EventEmitter<string> = new EventEmitter();
   
+  selectTabUse = SelectTabUse
   openTabs: TabData[] = [];
 
   constructor(private dataService: DataService) {

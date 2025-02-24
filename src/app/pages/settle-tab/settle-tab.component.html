@@ -1,11 +1,14 @@
 <div class="container" [ngSwitch]="currentViewState">
   <div class="header">Settle Tab</div>
   <app-select-tab
+    class="view-state"
     *ngSwitchCase="viewState.SelectTab"
+    [use]="selectTabUse.Settle"
     (tabSelected)="onTabSelected($event)">
   </app-select-tab>
   <app-tab-summary 
     *ngSwitchCase="viewState.TabSummary"
-    [tab]="tab">
+    [tab]="tab"
+    (onSummaryResponse)="onSummaryResponse($event)">
   </app-tab-summary>
 </div>

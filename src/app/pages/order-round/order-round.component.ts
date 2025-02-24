@@ -4,6 +4,7 @@ import { BottomSheetComponent } from 'src/app/shared/components/bottom-sheet/bot
 import { OrderItem } from 'src/app/shared/views/order-summary/order-summary.model';
 import { OrderSummaryView } from 'src/app/shared/views/order-summary/order-summary.component';
 import { DataService } from 'src/app/shared/services/data/data.service';
+import { SelectTabUse } from 'src/app/shared/views/select-tab/select-tab.const';
 
 @Component({
   selector: 'app-order-round',
@@ -15,6 +16,7 @@ export class OrderRoundPage {
   @ViewChild('bottomSheet', { read: ElementRef }) bottomSheetRef!: ElementRef;
   @ViewChild('orderSummary') orderSummary!: OrderSummaryView;
   
+  selectTabUse = SelectTabUse
   selectedTabID: string | undefined
   viewState = OrderViewState;
   currentViewState = OrderViewState.SelectTab
