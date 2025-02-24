@@ -29,7 +29,8 @@ export class DataService {
       isJustMe: isJustMe,
       addedParties: addedParties,
       isSettled: false,
-      openTimeStamp: new Date()
+      openTimeStamp: new Date(),
+      orders: []
     });
     this.writeData(this.data!);
   }

@@ -21,6 +21,8 @@ import { OpenTabConfirmationComponent } from './pages/open-tab/views/open-tab-co
 import { OpenTabConfirmedComponent } from './pages/open-tab/views/open-tab-confirmed/open-tab-confirmed.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { PersonalDetailsFormView } from './shared/views/personal-details-form/personal-details-form.component';
+import { OrderMenuComponent } from './pages/order-round/views/order-menu/order-menu.component';
+import { OrderConfirmationComponent } from './pages/order-round/views/order-confirmation/order-confirmation.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +50,8 @@ import { PersonalDetailsFormView } from './shared/views/personal-details-form/pe
     OpenTabConfirmationComponent,
     OpenTabConfirmedComponent,
     PersonalDetailsFormView,
+    OrderMenuComponent,
+    OrderConfirmationComponent,
   ],
   imports: [
     BrowserModule,

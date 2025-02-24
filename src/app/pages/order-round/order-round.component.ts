@@ -16,79 +16,21 @@ import { Router } from '@angular/router';
   templateUrl: './order-round.component.html',
   styleUrls: ['./order-round.component.scss'],
 })
-export class OrderRoundPage implements AfterViewInit {
+export class OrderRoundPage {
   @ViewChild('bottomSheet') bottomSheet!: BottomSheetComponent;
   @ViewChild('bottomSheet', { read: ElementRef }) bottomSheetRef!: ElementRef;
   @ViewChild('orderSummary') orderSummary!: OrderSummaryView;
 
   stockItemCardConfigs = StockItemCardConfigs;
-  showBottomSheet = false;
-  bottomSheetHeight = 0;
-  extraSpaceStyling = {};
   orderItems: OrderItem[] = [];
   isOrderConfirmation = false;
-  orderConfirmed = false;
-  confirmationButtons = ConfirmationButtons;
-  confirmedButton = ConfirmedButton
 
-  constructor(private router: Router) {}
-
-  ngAfterViewInit() {
-    if (this.bottomSheetRef?.nativeElement) {
-      this.extraSpaceStyling = {
-        height: `${this.bottomSheetRef.nativeElement.offsetHeight}px`,
-      };
-    }
-  }
-
-  onOrderInstruction(orderInstruction: OrderInstruction) {
-    this.updateOrder(orderInstruction);
-    this.renderBottomSheet();
-  }
-
-  onOrderPlaced() {
+  onOrderPlaced(orderItems: OrderItem[]) {
+    this.orderItems = orderItems
     this.isOrderConfirmation = true;
-    this.showBottomSheet = false;
   }
 
-  onConfirmationButtonClick(buttonName: string) {
-    switch (buttonName) {
-      case ConfirmationButton.Proceed: {
-        this.orderConfirmed = true;
-        setTimeout(() => {
-          this.router.navigate(['']);
-        }, 5000);
-        break;
-      }
-      case ConfirmationButton.Cancel: {
-        this.isOrderConfirmation = false;
-        this.showBottomSheet = true;
-        break;
-      }
-      case ConfirmationButton.Home: {
-        this.router.navigate(['']);
-        break;
-      }
-    }
-  }
-
-  private updateOrder(orderInstruction: OrderInstruction) {
-    this.orderItems.push({
-      title: orderInstruction.title,
-      price: orderInstruction.price,
-      qty: orderInstruction.qty,
-    });
-    this.orderSummary.updateOrder(this.orderItems);
-  }
-
-  private renderBottomSheet() {
-    this.showBottomSheet = true;
-    setTimeout(() => {
-      if (this.bottomSheetRef?.nativeElement) {
-        this.extraSpaceStyling = {
-          height: `${this.bottomSheetRef.nativeElement.offsetHeight}px`,
-        };
-      }
-    });
+  onConfirmationCancelled(){
+    this.isOrderConfirmation = false;
   }
 }

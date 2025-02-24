@@ -16,7 +16,13 @@ export interface TabData {
   addedParties: Friend[]
   isSettled: boolean
   openTimeStamp: Date
+  orders: OrderData[]
 }
+
+export interface OrderData {
+  id: string
+}
+
 
 export const InitialData: AppData = {
   userDetails: {
