@@ -33,6 +33,7 @@ export class DataService {
       isSettled: false,
       openTimeStamp: new Date(),
       orders: [],
+      itemsOrderedSummary: []
     });
 
     this.writeData(this.data);
@@ -98,6 +99,7 @@ export class DataService {
 
     if (!tab) return;
     tab.isSettled = true
+    tab.settledTimeStamp = new Date()
 
     this.writeData(this.data);
   }

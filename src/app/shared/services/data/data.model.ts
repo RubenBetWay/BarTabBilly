@@ -17,7 +17,9 @@ export interface TabData {
   addedParties: Friend[]
   isSettled: boolean
   openTimeStamp: Date
+  settledTimeStamp?: Date
   orders: OrderData[]
+  itemsOrderedSummary: AggregatedItemOrdered[]
 }
 
 export interface OrderData {
@@ -25,6 +27,10 @@ export interface OrderData {
   orderTimeStamp: Date
   orderItems: OrderItem[]
   totalValue: number
+}
+
+export interface AggregatedItemOrdered extends OrderItem {
+  subtotal: number
 }
 
 
