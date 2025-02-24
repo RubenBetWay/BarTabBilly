@@ -6,12 +6,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  isLoading = false;
+  isLoading = true;
 
   ngOnInit() {
     // For now to get a feel - this will become a app loading screen
     setTimeout(() => {
       this.isLoading = false;
-    }, 1000);
+    }, 2000);
   }
 }
