@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="confirmation-message">
+    <div >
+      Great stuff - your order is placed and your drinks are 
+      on their way. <br>Happy Drinking!!!
+    </div>
+    <app-button 
+      class="confirmation-button"
+      [config]="confirmedButton"
+      (onClick)="onConfirmationButtonClick(confirmedButton.name)">
+    </app-button>
+  </div>
+</div>
