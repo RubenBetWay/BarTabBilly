@@ -3,6 +3,7 @@ import { OrderViewState, ProductMenu } from './order-round.const';
 import { BottomSheetComponent } from 'src/app/shared/components/bottom-sheet/bottom-sheet.component';
 import { OrderItem } from 'src/app/shared/views/order-summary/order-summary.model';
 import { OrderSummaryView } from 'src/app/shared/views/order-summary/order-summary.component';
+import { DataService } from 'src/app/shared/services/data/data.service';
 
 @Component({
   selector: 'app-order-round',
@@ -13,7 +14,7 @@ export class OrderRoundPage {
   @ViewChild('bottomSheet') bottomSheet!: BottomSheetComponent;
   @ViewChild('bottomSheet', { read: ElementRef }) bottomSheetRef!: ElementRef;
   @ViewChild('orderSummary') orderSummary!: OrderSummaryView;
-
+  
   selectedTabID: string | undefined
   viewState = OrderViewState;
   currentViewState = OrderViewState.SelectTab
@@ -21,6 +22,8 @@ export class OrderRoundPage {
   orderItems: OrderItem[] = [];
   isOrderConfirmation = false;
 
+  constructor(private dataService: DataService) {}
+  
   onTabSelected(tabID: string){
     this.selectedTabID = tabID
     this.currentViewState = OrderViewState.ProductMenu
@@ -33,5 +36,10 @@ export class OrderRoundPage {
 
   onConfirmationCancelled(){
     this.currentViewState = OrderViewState.ProductMenu
+  }
+
+  onConfirmation(){
+    if (this.selectedTabID && this.orderItems)
+    this.dataService.placeOrder(this.selectedTabID, this.orderItems)
   }
 }

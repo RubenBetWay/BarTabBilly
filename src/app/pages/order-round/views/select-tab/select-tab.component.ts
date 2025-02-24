@@ -21,6 +21,5 @@ export class SelectTabComponent {
     this.openTabs = dataService.data.tabs.filter(
       (tab: TabData) => !tab.isSettled
     );
-    console.log(this.openTabs)
   }
 }

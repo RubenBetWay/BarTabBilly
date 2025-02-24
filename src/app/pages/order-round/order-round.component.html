@@ -16,6 +16,7 @@
     *ngSwitchCase="viewState.OrderConfirmation"
     class="view-container"
     [orderItems]="orderItems"
+    (onConfirmation)="onConfirmation()"
     (onConfirmationCancelled)="onConfirmationCancelled()">
   </app-order-confirmation>
 </div>

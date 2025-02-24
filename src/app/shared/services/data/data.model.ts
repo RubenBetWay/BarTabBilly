@@ -1,3 +1,4 @@
+import { OrderItem } from "../../views/order-summary/order-summary.model"
 import { PersonalDetails } from "../../views/personal-details-form/personal-details-form.model"
 
 export interface AppData {
@@ -21,6 +22,9 @@ export interface TabData {
 
 export interface OrderData {
   id: string
+  orderTimeStamp: Date
+  orderItems: OrderItem[]
+  totalValue: number
 }
 
 
