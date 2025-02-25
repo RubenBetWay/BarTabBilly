@@ -6,6 +6,7 @@ import {
 export enum ReceiptTypeSelection {
   CSV = 'csv',
   PDF = 'pdf',
+  Cancel = 'cancel'
 }
 
 export const ReceiptTypeButtons: ButtonConfig[] = [
@@ -19,4 +20,10 @@ export const ReceiptTypeButtons: ButtonConfig[] = [
     text: `PDF`,
     size: ButtonSize.Large,
   },
+{
+    name:  ReceiptTypeSelection.Cancel,
+    text: 'Back to Main Menu',
+    size: ButtonSize.Wide,
+    color: 'aquamarine'
+  }
 ];

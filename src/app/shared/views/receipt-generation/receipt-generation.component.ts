@@ -5,6 +5,7 @@ import {
 } from './receipt-generation.const';
 import { ReceiptService } from '../../services/receipt/receipt.service';
 import { TabData } from '../../services/data/data.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-receipt-generation',
@@ -12,24 +13,26 @@ import { TabData } from '../../services/data/data.model';
   styleUrls: ['./receipt-generation.component.scss'],
 })
 export class ReceiptGenerationComponent {
-  @Input() tab: TabData | undefined
+  @Input() tab: TabData | undefined;
 
   options = ReceiptTypeButtons;
 
-  constructor(private receiptService: ReceiptService){}
+  constructor(private receiptService: ReceiptService, private router: Router) {}
 
   onOptionClicked(buttonName: string) {
-    
     switch (buttonName as ReceiptTypeSelection) {
       case ReceiptTypeSelection.CSV: {
-        if (!this.tab) return
-        this.receiptService.generateCSVReceipt(this.tab)
+        if (!this.tab) return;
+        this.receiptService.generateCSVReceipt(this.tab);
         break;
       }
       case ReceiptTypeSelection.PDF: {
-        if (!this.tab) return
-        this.receiptService.generatePDFReceipt(this.tab)
+        if (!this.tab) return;
+        this.receiptService.generatePDFReceipt(this.tab);
         break;
+      }
+      case ReceiptTypeSelection.Cancel: {
+        this.router.navigate([''])
       }
     }
   }
