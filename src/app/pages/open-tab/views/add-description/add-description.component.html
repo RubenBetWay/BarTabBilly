@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="sub-headers-container">
+    <div class="sub-header">Please add a description name for this tab</div>
+    <div class="minor-header">(Better to identify later)</div>
+  </div>
+
+  <div class="textarea-container">
+    <textarea class="description-input" maxlength="30" [(ngModel)]="description"></textarea>
+    <div class="minor-header">30 characters max</div>
+  </div>
+
+  <app-button 
+    class="button" 
+    [config]="cancelButton"
+    (onClick)="onCancel.emit()">
+  </app-button>
+  <app-button 
+    *ngIf="description.length > 0"
+    class="button" 
+    [config]="doneButton"
+    (onClick)="onDescriptionAdded.emit(description)">
+  </app-button>
+</div>
