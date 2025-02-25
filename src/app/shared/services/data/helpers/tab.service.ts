@@ -10,7 +10,7 @@ export class TabService {
 
   openTab(
     data: AppData,
-    description:string,
+    description: string,
     isJustMe: boolean,
     addedParties: Friend[]
   ): AppData | null {
@@ -45,5 +45,10 @@ export class TabService {
     const tab = data.tabs.find((tab: TabData) => tab.id === tabID);
 
     return tab;
+  }
+
+  getOpenTabs(data: AppData): TabData[] {
+    if (!data?.tabs) return [];
+    return data.tabs.filter((tab: TabData) => !tab.isSettled);
   }
 }

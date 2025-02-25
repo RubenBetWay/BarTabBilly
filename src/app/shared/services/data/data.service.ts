@@ -42,6 +42,11 @@ export class DataService {
     if (upDatedData) this.writeData(upDatedData);
   }
 
+  getOpenTabs(): TabData[] {
+    this.data = this.callLatestData();
+    return this.tabService.getOpenTabs(this.data)
+  }
+
   getTabByID(tabID: string): TabData | undefined {
     this.data = this.callLatestData();
     return this.tabService.getTabByID(this.data, tabID)

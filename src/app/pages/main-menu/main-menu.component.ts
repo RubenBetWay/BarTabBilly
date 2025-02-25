@@ -3,6 +3,7 @@ import { ButtonConfig } from 'src/app/shared/components/button/button.model';
 import { DataService } from 'src/app/shared/services/data/data.service';
 import { OpenButton, OrderButton, SettleButton } from './main-menu.const';
 import { TabData } from 'src/app/shared/services/data/data.model';
+import { StandardOptionSelectorConfig } from 'src/app/shared/views/standard-option-selector/standard-option-selector.model';
 
 @Component({
   selector: 'app-main-menu',
@@ -10,19 +11,20 @@ import { TabData } from 'src/app/shared/services/data/data.model';
   styleUrls: ['./main-menu.component.scss'],
 })
 export class MainMenuPage {
-  menuOptions: ButtonConfig[] = [];
+  config: StandardOptionSelectorConfig = {
+    subHeader: 'Bar Tab Billy',
+    buttons: []
+  }
 
   constructor(private dataService: DataService) {
-    this.menuOptions = [OpenButton];
+    this.config.buttons = [OpenButton];
 
     // Check if there are any open tabs
-    if (!dataService.data) return;
-    if (!dataService.data.tabs) return;
-    const openTabs = dataService.data.tabs.filter(
-      (tab: TabData) => !tab.isSettled
-    );    
+    // If so add order and settle options
+    if (!dataService.data?.tabs) return;
+    const openTabs = dataService.getOpenTabs()
     
     if (openTabs.length > 0 )
-      this.menuOptions.push(OrderButton, SettleButton)
+      this.config.buttons.push(OrderButton, SettleButton)
   }
 }
