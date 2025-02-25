@@ -9,11 +9,12 @@
     </app-order-summary-table>
   </div>
 
-  <div class="detail-summary">
+  <div       
+    *ngIf="showDetail"
+    class="detail-summary">
     <div class="sub-header">Detail Summary</div>
     <div class="info">Where same item was added more then once</div>
     <app-order-summary-table 
-      *ngIf="showDetail"
       class="order-summary-table"
       [orderItems]="orderItems">
     </app-order-summary-table>
