@@ -1,5 +1,9 @@
 <div *ngIf="config" class="container">
-  <div class="sub-header">{{config.subHeader}}</div>
+  <div 
+    *ngIf="config.subHeader" 
+    class="sub-header">
+    {{config.subHeader}}
+  </div>
   <app-button 
     *ngFor="let button of config.buttons" 
     [config]="button" class="button"

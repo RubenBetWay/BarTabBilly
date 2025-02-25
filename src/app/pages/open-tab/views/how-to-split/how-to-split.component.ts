@@ -1,6 +1,10 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { ButtonConfig } from 'src/app/shared/components/button/button.model';
-import { CancelButton, JustMeButton, OpenTabInitialAnswer, WithFriendsButton } from './how-to-split.const';
+import {
+  CancelButton,
+  JustMeButton,
+  WithFriendsButton,
+} from './how-to-split.const';
+import { StandardOptionSelectorConfig } from 'src/app/shared/views/standard-option-selector/standard-option-selector.model';
 
 @Component({
   selector: 'app-how-to-split',
@@ -8,15 +12,10 @@ import { CancelButton, JustMeButton, OpenTabInitialAnswer, WithFriendsButton } f
   styleUrls: ['./how-to-split.component.scss'],
 })
 export class InitialComponent {
-  @Output() onAnswer: EventEmitter<string> = new EventEmitter();
-  @Output() onCancel: EventEmitter<void> = new EventEmitter();
+  @Output() onButtonClicked: EventEmitter<string> = new EventEmitter();
 
-  openTabInitialAnswer = OpenTabInitialAnswer
-
-  choiceButtons: ButtonConfig[] = [
-    JustMeButton, 
-    WithFriendsButton,
-  ];
-  cancelButton = CancelButton
-
+  config: StandardOptionSelectorConfig = {
+    subHeader: 'Who will be spitting the tab',
+    buttons: [JustMeButton, WithFriendsButton, CancelButton],
+  };
 }

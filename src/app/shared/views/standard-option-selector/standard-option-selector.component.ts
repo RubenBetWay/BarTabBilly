@@ -14,8 +14,12 @@ export class StandardOptionSelectorComponent {
 
   constructor(private router: Router){}
 
-  onButtonClicked(button: ButtonConfig){
-    if (button.url) this.router.navigate([button.url])
-    else this.buttonClicked.emit(button.name)  
+  onButtonClicked(button: ButtonConfig):  void {
+    
+    if (button.url) {
+      this.router.navigate([button.url])
+      return
+    }
+    else return this.buttonClicked.emit(button.name)  
   }
 }

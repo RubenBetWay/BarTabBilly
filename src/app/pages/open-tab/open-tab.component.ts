@@ -6,7 +6,7 @@ import { DataService } from 'src/app/shared/services/data/data.service';
 import { Friend } from 'src/app/shared/services/data/data.model';
 
 import { OpenTabViewState } from './open-tab.const';
-import { OpenTabInitialAnswer } from './views/how-to-split/how-to-split.const';
+import { HowToSplitAnswer } from './views/how-to-split/how-to-split.const';
 import { ConfirmationResponse } from './views/open-tab-confirmation/open-tab-confirmation.const';
 import { ConfirmedResponse } from './views/open-tab-confirmed/open-tab-confirmed.const';
 import { NoFriendsQuestionResponse } from './views/add-tab-parties/add-tab-parties.const';
@@ -29,13 +29,10 @@ export class OpenTabPage {
     private viewportScroller: ViewportScroller
   ) {}
 
-  onInitialAnswer(answer: string) {
-    this.isJustMe = answer === OpenTabInitialAnswer.JustMe;
+  onHowToSplitAnswer(answer: string) {
+    console.log(answer)
+    this.isJustMe = answer === HowToSplitAnswer.JustMe;
     this.changeView(OpenTabViewState.AddDescription);
-  }
-
-  onHowToSplitCanceled() {
-    this.router.navigate(['']);
   }
 
   onDescriptionAdded(description: string) {

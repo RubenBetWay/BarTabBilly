@@ -1,14 +1,5 @@
-<div class="container">
-  <div class="sub-header">Who will be spitting the tab</div>
-  <app-button 
-    class="button" 
-    *ngFor="let config of choiceButtons"
-    [config]="config"
-    (onClick)="onAnswer.emit(config.name)">
-  </app-button>
-  <app-button 
-    class="button" 
-    [config]="cancelButton"
-    (onClick)="onCancel.emit()">
-  </app-button>
-</div>
+<app-standard-option-selector 
+  class="standard-option-selector" 
+  [config]="config"
+  (buttonClicked)="onButtonClicked.emit($event)">
+</app-standard-option-selector>

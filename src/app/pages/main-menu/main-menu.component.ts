@@ -13,7 +13,6 @@ export class MainMenuPage {
 
   constructor(private dataService: DataService) {
     this.config = {
-      subHeader: 'Bar Tab Billy',
       buttons: [OpenButton],
     };
 
