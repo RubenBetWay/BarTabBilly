@@ -17,11 +17,20 @@ export class OrderConfirmationComponent {
   @Output() onConfirmationCancelled: EventEmitter<void[]> = new EventEmitter();
 
   confirmationButtons = ConfirmationButtons;
+  aggregateSummary: OrderItem[] = [];
+  showDetail = false;
+
+  ngOnInit() {
+    if (!this.orderItems) return;
+    this.setAggregateSummary();
+    this.showDetail =
+      this.orderItems.length !== this.aggregateSummary.length;
+  }
 
   onConfirmationButtonClick(buttonName: string) {
     switch (buttonName) {
       case ConfirmationButton.Proceed: {
-        this.onConfirmation.emit()
+        this.onConfirmation.emit();
         break;
       }
       case ConfirmationButton.Cancel: {
@@ -29,5 +38,20 @@ export class OrderConfirmationComponent {
         break;
       }
     }
+  }
+
+  private setAggregateSummary() {
+    if (!this.orderItems) return;
+    const aggregatedMap = new Map<string, OrderItem>();
+
+    this.orderItems.forEach(({ title, price, qty }) => {
+      if (aggregatedMap.has(title)) {
+        aggregatedMap.get(title)!.qty += qty;
+      } else {
+        aggregatedMap.set(title, { title, price, qty });
+      }
+    });
+
+    this.aggregateSummary = Array.from(aggregatedMap.values());
   }
 }

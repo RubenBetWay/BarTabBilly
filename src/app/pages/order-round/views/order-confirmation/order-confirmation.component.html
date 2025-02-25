@@ -1,9 +1,26 @@
 <div *ngIf="orderItems" class="container">
+
   <div class="sub-header">Please confirm the content of your order</div>
-  <app-order-summary-table 
-    class="order-summary-table"
-    [orderItems]="orderItems">
-  </app-order-summary-table>
+
+  <div class="aggregate-summary">
+    <app-order-summary-table 
+      class="order-summary-table"
+      [orderItems]="aggregateSummary">
+    </app-order-summary-table>
+  </div>
+
+  <div class="detail-summary">
+    <div class="sub-header">Detail Summary</div>
+    <div class="info">Where same item was added more then once</div>
+    <app-order-summary-table 
+      *ngIf="showDetail"
+      class="order-summary-table"
+      [orderItems]="orderItems">
+    </app-order-summary-table>
+  </div>
+
+
+
   <div class="buttons-container">
     <app-button 
       class="confirmation-button"
@@ -13,3 +30,4 @@
     </app-button>
   </div>
 </div>
+
