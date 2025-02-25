@@ -1,7 +1,24 @@
 <div class="card" *ngIf="tab" (click)="tabSelected.emit(tab.id)">
-  <div>Tab ID: {{tab.id}}</div>
-  <div class="sub-header">Tab total: </div>
-  <div>{{tabTotal | number: '1.2-2'}}</div>
-  <div class="sub-header">Added Parties:</div>
-  <div *ngFor="let party of tab.addedParties"> - {{party.firstName}} {{party.lastName}}</div>
+  <div class="card-line">
+    <div class="title">{{tab.description}}</div>
+  </div>
+
+  <div class="card-line">
+    <div class="label">Status:</div>
+    <div class="detail">{{tab.isSettled ? 'Settled':'Open'}}</div>
+  </div>
+
+  <div class="card-line">
+    <div class="label">Tab total:</div>
+    <div class="detail">R{{tabTotal | number: '1.2-2'}}</div>
+  </div>
+
+  <div class="card-line">
+    <div class="label">Split between:</div>
+    <div class="detail" *ngIf="tab.isJustMe">Just me</div>
+    <div class="detail" *ngIf="!tab.isJustMe">Me   
+      <span *ngFor="let party of tab.addedParties">, {{party.firstName}} {{party.lastName}}</span>
+  </div>
+  </div>
+
 </div>

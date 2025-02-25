@@ -9,7 +9,8 @@
     <app-add-description
       *ngSwitchCase="viewState.AddDescription"
       class="sub-view" 
-      (onDescriptionAdded)="onDescriptionAdded($event)">
+      (onDescriptionAdded)="onDescriptionAdded($event)"
+      (onCancel)="onDescriptionCanceled()">
     </app-add-description>
     <app-add-tab-parties
       *ngSwitchCase="viewState.AddTabParties"
