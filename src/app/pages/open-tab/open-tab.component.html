@@ -10,7 +10,8 @@
       *ngSwitchCase="viewState.AddTabParties"
       class="sub-view"
       (onNoFriendsAnswer)="onNoFriendsAnswer($event)"
-      (onListSubmitted)="onTabPartiesSelected($event)">
+      (onListSubmitted)="onTabPartiesSelected($event)"
+      (onAddFriendClicked)="onAddFriendClicked()">
     </app-add-tab-parties>
     <app-add-friend
       *ngSwitchCase="viewState.AddFriend"

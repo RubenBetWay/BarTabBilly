@@ -12,6 +12,13 @@ export const AddFriendsButton: ButtonConfig = {
   color: 'aquamarine',
 }
 
+export const SmallAddFriendsButton: ButtonConfig = {
+  name: NoFriendsQuestionResponse.Add,
+  text: `Add`, 
+  size: ButtonSize.XSmall, 
+  color: 'aquamarine',
+}
+
 export const JustMeButton: ButtonConfig = {
   name: NoFriendsQuestionResponse.JustMe,
   text: 'Change it to Just Me', 

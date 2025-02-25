@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { DataService } from 'src/app/shared/services/data/data.service';
-import { AddFriendsButton, DoneButton, JustMeButton, JustMeWideButton } from './add-tab-parties.const';
+import { AddFriendsButton, DoneButton, JustMeButton, JustMeWideButton, SmallAddFriendsButton } from './add-tab-parties.const';
 import { ButtonConfig } from 'src/app/shared/components/button/button.model';
 import { Friend } from 'src/app/shared/services/data/data.model';
 
@@ -12,9 +12,11 @@ import { Friend } from 'src/app/shared/services/data/data.model';
 export class AddTabPartiesComponent {
   @Output() onNoFriendsAnswer: EventEmitter<string> = new EventEmitter();
   @Output() onListSubmitted: EventEmitter<Friend[]> = new EventEmitter();
+  @Output() onAddFriendClicked: EventEmitter<void> = new EventEmitter();
 
   hasFriends = false;
   noFriendsOptions: ButtonConfig[] = [AddFriendsButton, JustMeButton];
+  smallAddFriendsButton = SmallAddFriendsButton
   
   availableFriends: Friend[] = [];
   selectedFriends: Friend[] = [];

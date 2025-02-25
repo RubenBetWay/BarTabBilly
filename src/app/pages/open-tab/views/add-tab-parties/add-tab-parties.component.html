@@ -22,7 +22,13 @@
       <div>-</div>
     </div>
   </div>
-  <div class="section-header">Available Friends</div>
+  <div class="section-header">
+    Available Friends
+    <app-button 
+      [config]="smallAddFriendsButton"
+      (onClick)="onAddFriendClicked.emit()">
+    </app-button>
+  </div>
   <div class="list-container">
     <div 
       class="friend-container lightblue"

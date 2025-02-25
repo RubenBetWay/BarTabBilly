@@ -59,6 +59,10 @@ export class OpenTabPage {
     this.changeView(OpenTabViewState.Confirmation)
   }
 
+  onAddFriendClicked(){
+    this.changeView(OpenTabViewState.AddFriend)
+  }
+
   onDoneAddingFriends() {
     this.changeView(OpenTabViewState.AddTabParties)
   }
