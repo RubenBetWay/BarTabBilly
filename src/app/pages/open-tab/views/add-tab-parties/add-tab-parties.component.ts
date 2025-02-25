@@ -1,8 +1,15 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { DataService } from 'src/app/shared/services/data/data.service';
-import { AddFriendsButton, DoneButton, JustMeButton, JustMeWideButton, SmallAddFriendsButton } from './add-tab-parties.const';
+import {
+  AddFriendsButton,
+  DoneButton,
+  JustMeButton,
+  JustMeWideButton,
+  SmallAddFriendsButton,
+} from './add-tab-parties.const';
 import { ButtonConfig } from 'src/app/shared/components/button/button.model';
 import { Friend } from 'src/app/shared/services/data/data.model';
+import { StandardOptionSelectorConfig } from 'src/app/shared/views/standard-option-selector/standard-option-selector.model';
 
 @Component({
   selector: 'app-add-tab-parties',
@@ -10,41 +17,53 @@ import { Friend } from 'src/app/shared/services/data/data.model';
   styleUrls: ['./add-tab-parties.component.scss'],
 })
 export class AddTabPartiesComponent {
-  @Output() onNoFriendsAnswer: EventEmitter<string> = new EventEmitter();
-  @Output() onListSubmitted: EventEmitter<Friend[]> = new EventEmitter();
-  @Output() onAddFriendClicked: EventEmitter<void> = new EventEmitter();
+  @Output() onNoFriendsAnswer = new EventEmitter<string>();
+  @Output() onListSubmitted = new EventEmitter<Friend[]>();
+  @Output() onAddFriendClicked = new EventEmitter<void>();
 
+  // Configuration for when there are no friends
+  noFriendsConfig: StandardOptionSelectorConfig = {
+    subHeader: `It seems that you don't have any friends just yet 
+    that<br><br>What would you like to do?`,
+    buttons: [AddFriendsButton, JustMeButton],
+  };
+
+  // State for available and selected friends
   hasFriends = false;
-  noFriendsOptions: ButtonConfig[] = [AddFriendsButton, JustMeButton];
-  smallAddFriendsButton = SmallAddFriendsButton
-  
   availableFriends: Friend[] = [];
   selectedFriends: Friend[] = [];
-  doneButton = DoneButton
-  justMeWideButton = JustMeWideButton
+
+  // Buttons and configurations
+  smallAddFriendsButton = SmallAddFriendsButton;
+  doneButton = DoneButton;
+  justMeWideButton = JustMeWideButton;
 
   constructor(private dataService: DataService) {
-    if (!dataService.data) return; // hasFriends remains false
+    this.initializeFriendsData();
+  }
 
-    // At this point we have confirmed this - but lets keep it tight
-    if (this.dataService.data) {
-      this.hasFriends = this.dataService.data.friends.length > 0;
-      if (this.hasFriends)
-        this.availableFriends = this.dataService.data.friends;
+  // Initialize friends data if available
+  private initializeFriendsData(): void {
+    const data = this.dataService.data;
+    if (data?.friends?.length) {
+      this.hasFriends = true;
+      this.availableFriends = data.friends;
     }
   }
 
-  unselectFriend(clickedFriend: Friend) {
-    this.availableFriends.push(clickedFriend);
+  // Remove a friend from selected and add it back to available list
+  unselectFriend(friend: Friend): void {
     this.selectedFriends = this.selectedFriends.filter(
-      (friend: Friend) => friend.id !== clickedFriend.id
+      (f) => f.id !== friend.id
     );
+    this.availableFriends.push(friend);
   }
 
-  selectFriend(clickedFriend: Friend) {
-    this.selectedFriends.push(clickedFriend);
+  // Add a friend to selected and remove it from available list
+  selectFriend(friend: Friend): void {
+    this.selectedFriends.push(friend);
     this.availableFriends = this.availableFriends.filter(
-      (friend: Friend) => friend.id !== clickedFriend.id
+      (f) => f.id !== friend.id
     );
   }
 }

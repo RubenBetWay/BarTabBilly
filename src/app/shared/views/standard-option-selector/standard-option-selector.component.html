@@ -3,13 +3,13 @@
   <div class="headers-container">
     <div 
       *ngIf="config.subHeader" 
-      class="sub-header">
-      {{config.subHeader}}
+      class="sub-header"
+      [innerHTML]="config.subHeader">
     </div>
     <div 
       *ngIf="config.minorHeader" 
-      class="minor-header">
-      {{config.minorHeader}}
+      class="minor-header"
+      [innerHTML]="config.minorHeader">
     </div>
   </div>
 

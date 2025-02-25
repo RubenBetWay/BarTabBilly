@@ -1,13 +1,9 @@
-<div class="container" *ngIf="!hasFriends">
-  <div class="sub-header">It seems that you don't have any friends just yet that
-    you can add to the tab split. <br><br>What would you like to do?</div>
-  <app-button 
-    class="button" 
-    *ngFor="let config of noFriendsOptions"
-    [config]="config" 
-    (onClick)="onNoFriendsAnswer.emit(config.name)">
-  </app-button>
-</div>
+<app-standard-option-selector 
+  *ngIf="!hasFriends"
+  class="standard-option-selector" 
+  [config]="noFriendsConfig"
+  (buttonClicked)="onNoFriendsAnswer.emit($event)">
+</app-standard-option-selector>
 
 <div class="container" *ngIf="hasFriends">
   <div class="sub-header">Please settle the friends you would like to split this
