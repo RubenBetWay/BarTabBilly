@@ -1,24 +1,14 @@
-<div class="container">
-  <div class="sub-headers-container">
-    <div class="sub-header">Please add a description name for this tab</div>
-    <div class="minor-header">(Better to identify later)</div>
-  </div>
-
+<app-standard-option-selector 
+  class="standard-option-selector" 
+  [config]="config"
+  (buttonClicked)="onButtonClicked($event)">
   <div class="textarea-container">
-    <textarea class="description-input" maxlength="30" [(ngModel)]="description"></textarea>
-    <div class="minor-header">30 characters max</div>
+    <textarea 
+      class="description-input" 
+      [(ngModel)]="description" 
+      (input)="onDescriptionChange()"
+      maxlength="30" >
+    </textarea>
+    <div class="tip-note">30 characters max</div>
   </div>
-
-  <app-button 
-    *ngIf="description.length > 0"
-    class="button" 
-    [config]="doneButton"
-    (onClick)="onDescriptionAdded.emit(description)">
-  </app-button>
-  <app-button 
-    class="button" 
-    [config]="cancelButton"
-    (onClick)="onCancel.emit()">
-  </app-button>
-
-</div>
+</app-standard-option-selector>

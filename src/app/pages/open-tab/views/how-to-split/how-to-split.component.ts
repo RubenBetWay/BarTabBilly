@@ -14,7 +14,7 @@ import { StandardOptionSelectorConfig } from 'src/app/shared/views/standard-opti
 export class InitialComponent {
   @Output() onButtonClicked: EventEmitter<string> = new EventEmitter();
 
-  config: StandardOptionSelectorConfig = {
+  readonly config: StandardOptionSelectorConfig = {
     subHeader: 'Who will be spitting the tab',
     buttons: [JustMeButton, WithFriendsButton, CancelButton],
   };

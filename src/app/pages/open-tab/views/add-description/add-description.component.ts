@@ -1,9 +1,10 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Output, SimpleChanges } from '@angular/core';
 import {
   AddDescriptionsActions,
   CancelButton,
   DoneButton,
 } from './add-description.const';
+import { StandardOptionSelectorConfig } from 'src/app/shared/views/standard-option-selector/standard-option-selector.model';
 
 @Component({
   selector: 'app-add-description',
@@ -11,22 +12,26 @@ import {
   styleUrls: ['./add-description.component.scss'],
 })
 export class AddDescriptionComponent {
-  @Output() onDescriptionAdded: EventEmitter<string> = new EventEmitter();
-  @Output() onCancel: EventEmitter<string> = new EventEmitter();
+  @Output() onDescriptionAdded = new EventEmitter<string>();
+  @Output() onCancel = new EventEmitter<void>();
+
+  config: StandardOptionSelectorConfig = {
+    subHeader: 'Please add a description name for this tab',
+    minorHeader: '(Better to identify later)',
+    buttons: [CancelButton],
+  };
 
   description = '';
-  doneButton = DoneButton;
-  cancelButton = CancelButton;
 
-  onActionButtonClicked(buttonName: string) {
-    switch (buttonName as AddDescriptionsActions) {
-      case AddDescriptionsActions.Done: {
-        this.onDescriptionAdded.emit(this.description);
-        break;
-      }
-      case AddDescriptionsActions.Cancel: {
-        this.onCancel.emit();
-      }
-    }
+  onDescriptionChange(): void {
+    this.config.buttons = this.description.trim() !== ''
+      ? [DoneButton, CancelButton]
+      : [CancelButton];
   }
+
+  onButtonClicked = (buttonName: string): void => {
+    if (buttonName === AddDescriptionsActions.Done)
+      this.onDescriptionAdded.emit(this.description);
+    else if (buttonName === AddDescriptionsActions.Cancel) this.onCancel.emit();
+  };
 }

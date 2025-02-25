@@ -1,12 +1,24 @@
 <div *ngIf="config" class="container">
-  <div 
-    *ngIf="config.subHeader" 
-    class="sub-header">
-    {{config.subHeader}}
+
+  <div class="headers-container">
+    <div 
+      *ngIf="config.subHeader" 
+      class="sub-header">
+      {{config.subHeader}}
+    </div>
+    <div 
+      *ngIf="config.minorHeader" 
+      class="minor-header">
+      {{config.minorHeader}}
+    </div>
   </div>
+
+  <ng-content></ng-content>
+
   <app-button 
     *ngFor="let button of config.buttons" 
     [config]="button" class="button"
     (onClick)="onButtonClicked(button)">
   </app-button>
+
 </div>
