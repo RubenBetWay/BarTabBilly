@@ -1,7 +1,7 @@
 <div class="container" [ngSwitch]="currentViewState">
   <div class="header">Settle Tab</div>
   <app-select-tab
-    class="view-state"
+    class="view-container"
     *ngSwitchCase="viewState.SelectTab"
     [use]="selectTabUse.Settle"
     (tabSelected)="onTabSelected($event)">
@@ -12,7 +12,7 @@
     (onSummaryResponse)="onSummaryResponse($event)">
   </app-tab-summary>
   <app-tab-split
-    class="view-state"
+    class="view-container"
     *ngSwitchCase="viewState.TabSplit"
     [tab]="tab"
     (onActonButtonClicked)="onTabSplitActionButtonClicked($event)">
@@ -22,7 +22,7 @@
     (onActonButtonClicked)="onConfirmationActionButtonClicked($event)">
   </app-settlement-confirmed>
   <app-receipt-generation
-    class="view-state"
+    class="view-container"
     *ngSwitchCase="viewState.Receipt"
     [tab]="tab">
   </app-receipt-generation>

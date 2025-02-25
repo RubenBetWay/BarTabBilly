@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { TabData } from 'src/app/shared/services/data/data.model';
 import { DataService } from 'src/app/shared/services/data/data.service';
-import { SelectTabUse } from './select-tab.const';
+import { CancelButton, SelectTabUse } from './select-tab.const';
 import { Router } from '@angular/router';
 
 @Component({
@@ -15,6 +15,7 @@ export class SelectTabComponent {
   
   selectTabUse = SelectTabUse
   openTabs: TabData[] = [];
+  cancelButton = CancelButton
 
   constructor(private dataService: DataService, private router: Router) {
     // Should not be able to access this page if
@@ -29,5 +30,9 @@ export class SelectTabComponent {
     // If there are no open tabs, you should not be here
     if (this.openTabs.length === 0)
       this.router.navigate([''])
+  }
+
+  onCancelClicked(){
+    this.router.navigate([''])
   }
 }

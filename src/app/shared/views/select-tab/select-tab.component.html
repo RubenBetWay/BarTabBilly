@@ -6,7 +6,17 @@
       ? 'would like to settle' 
       : ''}}
   </div>
+
   <app-tab-card class="tab-card" *ngFor="let tab of openTabs" [tab]="tab"
     (tabSelected)="tabSelected.emit(tab.id)">
   </app-tab-card>
+  
+  <div class="button-container">
+    <app-button
+      class="button"
+      [config]="cancelButton"
+      (onClick)="onCancelClicked()">
+    </app-button>
+  </div>
+
 </div>
