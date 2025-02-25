@@ -1,7 +1,9 @@
-<div class="container">
+<app-standard-option-selector 
+  class="standard-option-selector" 
+  [config]="config">
   <app-personal-details-form 
     class="form"
     (onFormSubmitted)="onFriendAdded($event)"
     (done)="done.emit()">
   </app-personal-details-form>
-</div>
+</app-standard-option-selector>

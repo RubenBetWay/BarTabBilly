@@ -1,9 +1,6 @@
-.container {
+.standard-option-selector {
   display: flex;
-  min-height: 100svh;
   width: 100%;
-  flex-direction: column;
-  align-items: center;
 
   .form {
     display: flex;

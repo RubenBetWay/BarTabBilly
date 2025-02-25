@@ -41,7 +41,6 @@ export class PersonalDetailsFormView {
         this.onFormSubmitted.emit(
           this.personalDetailsForm.value as PersonalDetails
         );
-        console.log('Here')
         this.done.emit()
         break;
       }
