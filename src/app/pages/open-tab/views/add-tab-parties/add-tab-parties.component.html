@@ -5,9 +5,12 @@
   (buttonClicked)="onNoFriendsAnswer.emit($event)">
 </app-standard-option-selector>
 
-<div class="container" *ngIf="hasFriends">
-  <div class="sub-header">Please settle the friends you would like to split this
-    tab with</div>
+<app-standard-option-selector 
+  *ngIf="hasFriends"
+  class="standard-option-selector" 
+  [config]="friendsConfig"
+  (buttonClicked)="onFriendsButtonClicked($event)">
+
   <div class="section-header">Selected Friends</div>
   <div class="list-container">
     <div 
@@ -35,15 +38,5 @@
     </div>
   </div>
   <div class="action-buttons-container"></div>
-  <app-button 
-    *ngIf="selectedFriends.length > 0"
-    class="button" 
-    [config]="doneButton"
-    (onClick)="onListSubmitted.emit(selectedFriends)">
-  </app-button>
-  <app-button 
-    class="button" 
-    [config]="justMeWideButton"
-    (onClick)="onNoFriendsAnswer.emit(justMeWideButton.name)">
-  </app-button>
-</div>
+
+</app-standard-option-selector>

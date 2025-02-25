@@ -5,9 +5,9 @@ import {
   DoneButton,
   JustMeButton,
   JustMeWideButton,
+  SelectedFriendsActions,
   SmallAddFriendsButton,
 } from './add-tab-parties.const';
-import { ButtonConfig } from 'src/app/shared/components/button/button.model';
 import { Friend } from 'src/app/shared/services/data/data.model';
 import { StandardOptionSelectorConfig } from 'src/app/shared/views/standard-option-selector/standard-option-selector.model';
 
@@ -28,6 +28,13 @@ export class AddTabPartiesComponent {
     buttons: [AddFriendsButton, JustMeButton],
   };
 
+  // Configuration for when there ARE friends
+  friendsConfig: StandardOptionSelectorConfig = {
+    subHeader: `Please settle the friends you would like to split this
+    tab with`,
+    buttons: [JustMeWideButton],
+  };
+
   // State for available and selected friends
   hasFriends = false;
   availableFriends: Friend[] = [];
@@ -35,8 +42,6 @@ export class AddTabPartiesComponent {
 
   // Buttons and configurations
   smallAddFriendsButton = SmallAddFriendsButton;
-  doneButton = DoneButton;
-  justMeWideButton = JustMeWideButton;
 
   constructor(private dataService: DataService) {
     this.initializeFriendsData();
@@ -51,12 +56,20 @@ export class AddTabPartiesComponent {
     }
   }
 
+  onFriendsButtonClicked(buttonName: string){
+    if (buttonName === SelectedFriendsActions.Done)
+      this.onListSubmitted.emit(this.selectedFriends)
+    else if (buttonName === SelectedFriendsActions.JustMe)
+      this.onNoFriendsAnswer.emit(JustMeWideButton.name)
+  }
+
   // Remove a friend from selected and add it back to available list
   unselectFriend(friend: Friend): void {
     this.selectedFriends = this.selectedFriends.filter(
       (f) => f.id !== friend.id
     );
     this.availableFriends.push(friend);
+    this.updateButtons()
   }
 
   // Add a friend to selected and remove it from available list
@@ -65,5 +78,13 @@ export class AddTabPartiesComponent {
     this.availableFriends = this.availableFriends.filter(
       (f) => f.id !== friend.id
     );
+    this.updateButtons()
+  }
+
+  private updateButtons() {
+    this.friendsConfig.buttons =
+      this.selectFriend.length === 0
+        ? [JustMeWideButton]
+        : [DoneButton, JustMeWideButton];
   }
 }
