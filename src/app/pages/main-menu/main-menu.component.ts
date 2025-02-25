@@ -9,20 +9,19 @@ import { StandardOptionSelectorConfig } from 'src/app/shared/views/standard-opti
   styleUrls: ['./main-menu.component.scss'],
 })
 export class MainMenuPage {
-  config: StandardOptionSelectorConfig = {
-    subHeader: 'Bar Tab Billy',
-    buttons: []
-  }
+  config: StandardOptionSelectorConfig;
 
   constructor(private dataService: DataService) {
-    this.config.buttons = [OpenButton];
+    this.config = {
+      subHeader: 'Bar Tab Billy',
+      buttons: [OpenButton],
+    };
 
-    // Check if there are any open tabs
-    // If so add order and settle options
     if (!dataService.data?.tabs) return;
-    const openTabs = dataService.getOpenTabs()
-    
-    if (openTabs.length > 0 )
-      this.config.buttons.push(OrderButton, SettleButton)
+
+    const openTabs = dataService.getOpenTabs();
+    if (openTabs?.length) {
+      this.config.buttons.push(OrderButton, SettleButton);
+    }
   }
 }
