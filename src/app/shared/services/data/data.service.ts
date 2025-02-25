@@ -31,10 +31,11 @@ export class DataService {
     if (upDatedData) this.writeData(upDatedData);
   }
 
-  openTab(isJustMe: boolean, addedParties: Friend[]) {
+  openTab(description: string, isJustMe: boolean, addedParties: Friend[]) {
     this.data = this.callLatestData();
     const upDatedData = this.tabService.openTab(
       this.data,
+      description,
       isJustMe, 
       addedParties
     );

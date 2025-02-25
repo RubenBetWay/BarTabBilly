@@ -10,12 +10,14 @@ export class TabService {
 
   openTab(
     data: AppData,
+    description:string,
     isJustMe: boolean,
     addedParties: Friend[]
   ): AppData | null {
     if (!data) return null;
     data.tabs.push({
       id: this.idGeneratorService.generateRandomID(),
+      description: description,
       isJustMe: isJustMe,
       addedParties: addedParties,
       isSettled: false,

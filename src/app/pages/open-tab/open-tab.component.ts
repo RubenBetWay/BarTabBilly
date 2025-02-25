@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { OpenTabViewState } from './open-tab.const';
-import { OpenTabInitialAnswer } from './views/initial/initial.const';
+import { OpenTabInitialAnswer } from './views/how-to-split/how-to-split.const';
 import { ConfirmationResponse } from './views/open-tab-confirmation/open-tab-confirmation.const';
 import { DataService } from 'src/app/shared/services/data/data.service';
 import { ConfirmedResponse } from './views/open-tab-confirmed/open-tab-confirmed.const';
@@ -17,6 +17,7 @@ import { ViewportScroller } from '@angular/common';
 export class OpenTabPage {
   viewState = OpenTabViewState;
   currentViewState = OpenTabViewState.Initial;
+  description = ''
   isJustMe = false;
   addedParties: Friend[] = [];
 
@@ -71,7 +72,7 @@ export class OpenTabPage {
     switch (answer as ConfirmationResponse) {
       case ConfirmationResponse.Confirm: {
         this.changeView(OpenTabViewState.Confirmed)
-        this.dataService.openTab(this.isJustMe, this.addedParties);
+        this.dataService.openTab(this.description, this.isJustMe, this.addedParties);
         break;
       }
       case ConfirmationResponse.Reject: {

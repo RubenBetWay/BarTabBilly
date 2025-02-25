@@ -13,6 +13,7 @@ export interface Friend extends PersonalDetails {
 
 export interface TabData {
   id: string
+  description: string
   isJustMe: boolean,
   addedParties: Friend[]
   isSettled: boolean
