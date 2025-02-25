@@ -1,1 +1,8 @@
-<p>standard-option-selector works!</p>
+<div *ngIf="config" class="container">
+  <div class="sub-header">{{config.subHeader}}</div>
+  <app-button 
+    *ngFor="let button of config.buttons" 
+    [config]="button" class="button"
+    (onClick)="onButtonClicked(button)">
+  </app-button>
+</div>

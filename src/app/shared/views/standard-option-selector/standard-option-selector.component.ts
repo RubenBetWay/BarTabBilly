@@ -1,5 +1,7 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { StandardOptionSelectorConfig } from './standard-option-selector.model';
+import { ButtonConfig } from '../../components/button/button.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-standard-option-selector',
@@ -8,4 +10,12 @@ import { StandardOptionSelectorConfig } from './standard-option-selector.model';
 })
 export class StandardOptionSelectorComponent {
   @Input() config: StandardOptionSelectorConfig | undefined;
+  @Output() buttonClicked: EventEmitter<string> = new EventEmitter()
+
+  constructor(private router: Router){}
+
+  onButtonClicked(button: ButtonConfig){
+    if (button.url) this.router.navigate([button.url])
+    else this.buttonClicked.emit(button.name)  
+  }
 }
