@@ -10,6 +10,7 @@ export enum OrderViewState {
 export const ProductMenu: StockItemCardConfig[] = [
   {
     title: 'Beer',
+    image: 'assets/beer.png',
     price: 45,
     details: `Celebrate with a cold one! Beer is the perfect \
         companion for any occasion. From crisp lagers \
@@ -23,6 +24,7 @@ export const ProductMenu: StockItemCardConfig[] = [
   },
   {
     title: 'Cider',
+    image: 'assets/cider.png',
     price: 52,
     details: `Get your apple on! Cider is a refreshing twist \
         on traditional drinks. From sweet and fruity to \
@@ -35,6 +37,7 @@ export const ProductMenu: StockItemCardConfig[] = [
   },
   {
     title: 'Pre-mix',
+    image: 'assets/pre-mix.png',
     price: 59,
     details: `Convenience in a can! Pre-mix drinks are the \
         perfect choice when you want a hassle-free \

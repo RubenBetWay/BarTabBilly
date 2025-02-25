@@ -3,7 +3,7 @@
   *ngIf="config">
 
   <div class="top-section">
-    <img class="image" src="assets/main-logo.jpeg" alt="Description of image">
+    <img class="image" src={{config.image}} alt="Description of image">
     <div class="order-panel">
       <div class="price">R {{config.price | number: '1.2-2'}} ea</div>
       <app-quantity-toggle 
