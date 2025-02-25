@@ -19,7 +19,7 @@ import { AddTabPartiesComponent } from './pages/open-tab/views/add-tab-parties/a
 import { AddFriendComponent } from './pages/open-tab/views/add-friend/add-friend.component';
 import { OpenTabConfirmationComponent } from './pages/open-tab/views/open-tab-confirmation/open-tab-confirmation.component';
 import { OpenTabConfirmedComponent } from './pages/open-tab/views/open-tab-confirmed/open-tab-confirmed.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PersonalDetailsFormView } from './shared/views/personal-details-form/personal-details-form.component';
 import { OrderMenuComponent } from './pages/order-round/views/order-menu/order-menu.component';
 import { OrderConfirmationComponent } from './pages/order-round/views/order-confirmation/order-confirmation.component';
@@ -30,6 +30,7 @@ import { OrderConfirmedComponent } from './pages/order-round/views/order-confirm
 import { TabSplitComponent } from './pages/settle-tab/views/tab-split/tab-split.component';
 import { SettlementConfirmedComponent } from './pages/settle-tab/views/settlement-confirmed/settlement-confirmed.component';
 import { ReceiptGenerationComponent } from './shared/views/receipt-generation/receipt-generation.component';
+import { AddDescriptionComponent } from './pages/open-tab/views/add-description/add-description.component';
 
 @NgModule({
   declarations: [
@@ -66,11 +67,13 @@ import { ReceiptGenerationComponent } from './shared/views/receipt-generation/re
     TabSplitComponent,
     SettlementConfirmedComponent,
     ReceiptGenerationComponent,
+    AddDescriptionComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

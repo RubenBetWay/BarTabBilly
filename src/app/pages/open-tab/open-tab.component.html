@@ -2,10 +2,15 @@
   <div class="logo">Open Tab</div>
   <div class="sub-view-container" [ngSwitch]="currentViewState">
     <app-how-to-split 
-      *ngSwitchCase="viewState.Initial"
+      *ngSwitchCase="viewState.HowToSplit"
       class="sub-view" 
       (onAnswer)="onInitialAnswer($event)">
     </app-how-to-split>
+    <app-add-description
+      *ngSwitchCase="viewState.AddDescription"
+      class="sub-view" 
+      (onDescriptionAdded)="onDescriptionAdded($event)">
+    </app-add-description>
     <app-add-tab-parties
       *ngSwitchCase="viewState.AddTabParties"
       class="sub-view"

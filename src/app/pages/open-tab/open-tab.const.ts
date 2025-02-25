@@ -1,5 +1,6 @@
 export enum OpenTabViewState {
-  Initial,
+  HowToSplit,
+  AddDescription,
   AddTabParties,
   AddFriend,
   Confirmation,

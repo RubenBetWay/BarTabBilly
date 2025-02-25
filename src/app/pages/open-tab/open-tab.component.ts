@@ -16,8 +16,8 @@ import { ViewportScroller } from '@angular/common';
 })
 export class OpenTabPage {
   viewState = OpenTabViewState;
-  currentViewState = OpenTabViewState.Initial;
-  description = ''
+  currentViewState = OpenTabViewState.HowToSplit;
+  description = '';
   isJustMe = false;
   addedParties: Friend[] = [];
 
@@ -28,27 +28,29 @@ export class OpenTabPage {
   ) {}
 
   onInitialAnswer(answer: string) {
-    switch (answer as OpenTabInitialAnswer) {
-      case OpenTabInitialAnswer.JustMe: {
-        this.changeView(OpenTabViewState.Confirmation)
-        this.isJustMe = true;
-        break;
-      }
-      case OpenTabInitialAnswer.WithFriends: {
-        this.changeView(OpenTabViewState.AddTabParties)
-        break;
-      }
-    }
+    this.isJustMe = answer === OpenTabInitialAnswer.JustMe;
+    this.changeView(OpenTabViewState.AddDescription);
+  }
+
+  onDescriptionAdded(description: string) {
+    console.log(description)
+    this.description = description;
+    if (this.isJustMe) this.changeView(OpenTabViewState.Confirmation);
+    else this.changeView(OpenTabViewState.AddTabParties);
+  }
+
+  onDescriptionCanceled(){
+    this.changeView(OpenTabViewState.HowToSplit)
   }
 
   onNoFriendsAnswer(answer: string) {
     switch (answer as NoFriendsQuestionResponse) {
       case NoFriendsQuestionResponse.Add: {
-        this.changeView(OpenTabViewState.AddFriend)
+        this.changeView(OpenTabViewState.AddFriend);
         break;
       }
       case NoFriendsQuestionResponse.JustMe: {
-        this.changeView(OpenTabViewState.Confirmation)
+        this.changeView(OpenTabViewState.Confirmation);
         this.isJustMe = true;
         break;
       }
@@ -57,26 +59,30 @@ export class OpenTabPage {
 
   onTabPartiesSelected(addedParties: Friend[]) {
     this.addedParties = addedParties;
-    this.changeView(OpenTabViewState.Confirmation)
+    this.changeView(OpenTabViewState.Confirmation);
   }
 
-  onAddFriendClicked(){
-    this.changeView(OpenTabViewState.AddFriend)
+  onAddFriendClicked() {
+    this.changeView(OpenTabViewState.AddFriend);
   }
 
   onDoneAddingFriends() {
-    this.changeView(OpenTabViewState.AddTabParties)
+    this.changeView(OpenTabViewState.AddTabParties);
   }
 
   onConfirmationResponse(answer: string) {
     switch (answer as ConfirmationResponse) {
       case ConfirmationResponse.Confirm: {
-        this.changeView(OpenTabViewState.Confirmed)
-        this.dataService.openTab(this.description, this.isJustMe, this.addedParties);
+        this.changeView(OpenTabViewState.Confirmed);
+        this.dataService.openTab(
+          this.description,
+          this.isJustMe,
+          this.addedParties
+        );
         break;
       }
       case ConfirmationResponse.Reject: {
-        this.changeView(OpenTabViewState.Initial)
+        this.changeView(OpenTabViewState.HowToSplit);
         this.isJustMe = false;
         break;
       }
@@ -96,8 +102,8 @@ export class OpenTabPage {
     }
   }
 
-  private changeView(view: OpenTabViewState){
-    this.currentViewState = view
+  private changeView(view: OpenTabViewState) {
+    this.currentViewState = view;
     this.viewportScroller.scrollToPosition([0, 0]);
   }
 }
