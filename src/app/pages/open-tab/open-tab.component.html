@@ -4,7 +4,8 @@
     <app-how-to-split 
       *ngSwitchCase="viewState.HowToSplit"
       class="sub-view" 
-      (onAnswer)="onInitialAnswer($event)">
+      (onAnswer)="onInitialAnswer($event)"
+      (onCancel)="onHowToSplitCanceled()">
     </app-how-to-split>
     <app-add-description
       *ngSwitchCase="viewState.AddDescription"

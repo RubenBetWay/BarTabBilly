@@ -24,12 +24,16 @@ export class OpenTabPage {
   constructor(
     private dataService: DataService,
     private router: Router,
-    private viewportScroller: ViewportScroller
+    private viewportScroller: ViewportScroller,
   ) {}
 
   onInitialAnswer(answer: string) {
     this.isJustMe = answer === OpenTabInitialAnswer.JustMe;
     this.changeView(OpenTabViewState.AddDescription);
+  }
+
+  onHowToSplitCanceled(){
+    this.router.navigate(['']);
   }
 
   onDescriptionAdded(description: string) {

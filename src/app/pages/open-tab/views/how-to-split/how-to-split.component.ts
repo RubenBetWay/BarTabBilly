@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { ButtonConfig } from 'src/app/shared/components/button/button.model';
-import { JustMeButton, OpenTabInitialAnswer, WithFriendsButton } from './how-to-split.const';
+import { CancelButton, JustMeButton, OpenTabInitialAnswer, WithFriendsButton } from './how-to-split.const';
 
 @Component({
   selector: 'app-how-to-split',
@@ -9,11 +9,14 @@ import { JustMeButton, OpenTabInitialAnswer, WithFriendsButton } from './how-to-
 })
 export class InitialComponent {
   @Output() onAnswer: EventEmitter<string> = new EventEmitter();
+  @Output() onCancel: EventEmitter<void> = new EventEmitter();
 
   openTabInitialAnswer = OpenTabInitialAnswer
 
-  menuOptions: ButtonConfig[] = [
+  choiceButtons: ButtonConfig[] = [
     JustMeButton, 
-    WithFriendsButton
+    WithFriendsButton,
   ];
+  cancelButton = CancelButton
+
 }

@@ -10,14 +10,15 @@
   </div>
 
   <app-button 
-    class="button" 
-    [config]="cancelButton"
-    (onClick)="onCancel.emit()">
-  </app-button>
-  <app-button 
     *ngIf="description.length > 0"
     class="button" 
     [config]="doneButton"
     (onClick)="onDescriptionAdded.emit(description)">
   </app-button>
+  <app-button 
+    class="button" 
+    [config]="cancelButton"
+    (onClick)="onCancel.emit()">
+  </app-button>
+
 </div>

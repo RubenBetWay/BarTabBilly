@@ -2,7 +2,8 @@ import { ButtonConfig, ButtonSize } from "src/app/shared/components/button/butto
 
 export enum OpenTabInitialAnswer {
   JustMe = 'just-me',
-  WithFriends = 'with-friends'
+  WithFriends = 'with-friends',
+  Cancel = 'cancel'
 } 
 
 export const JustMeButton: ButtonConfig = {
@@ -15,4 +16,11 @@ export const WithFriendsButton: ButtonConfig = {
   name: OpenTabInitialAnswer.WithFriends,
   text: 'With Friends', 
   size: ButtonSize.Large, 
-}  
+} 
+
+export const CancelButton: ButtonConfig = {
+  name: OpenTabInitialAnswer.Cancel,
+  text: 'Changed my mind',
+  size: ButtonSize.Wide,
+  color: 'lightblue',
+};
